@@ -38,9 +38,9 @@
     					<table class="table " id="masteradmin">
     						<thead>
     							<tr>
+    								<th>No</th>
     								<th>User</th>
     								<th>Email</th>
-    								<th>Created At</th>
     								<th>Status</th>
     								<th>Created At</th>
     								<th>Action</th>
@@ -498,6 +498,83 @@
 
     						$('#modal').modal('hide');
 
+    					});
+    				}
+    				return false;
+    			});
+    			$('body').on('click', '.hapus', function() {
+    				var id_user = $(this).data('id_user');
+    				var nama_admin = $(this).data('nama_admin');
+
+    				Swal.fire({
+    					title: 'Are you sure?',
+    					text: "Anda akan Menghapus Produk: " + nama_admin,
+    					icon: 'warning',
+    					showCancelButton: true,
+    					confirmButtonColor: '#3085d6',
+    					cancelButtonColor: '#d33',
+    					confirmButtonText: 'Yes, delete it!'
+    				}).then((result) => {
+
+
+    					if (result.isConfirmed) {
+    						$.ajax({
+    							url: '<?= $bu ?>Admin/hapusAdmin ',
+    							dataType: 'json',
+    							method: 'POST',
+    							data: {
+    								id_user: id_user
+    							}
+    						}).done(function(e) {
+    							// console.log(e);
+    							Swal.fire(
+    								'Deleted!',
+    								e.message,
+    								'success'
+    							)
+    							$('#modal-detail').modal('hide');
+
+    							datatable.ajax.reload();
+    							resetForm();
+
+    						}).fail(function(e) {
+    							console.log('gagal');
+    							console.log(e);
+    							var message = 'Terjadi Kesalahan. #JSMP01';
+    						});
+
+
+
+    						// Swal.fire(
+    						// 	'Deleted!',
+    						// 	'Your file has been deleted.',
+    						// 	'success'
+    						// )
+    					}
+    				})
+
+
+
+
+
+    				var c = confirm('Apakah anda yakin akan menghapus admin: "' + username + '" ?');
+    				if (c == true) {
+    					$.ajax({
+    						url: bu + 'admin/hapusAdmin',
+    						dataType: 'json',
+    						method: 'POST',
+    						data: {
+    							id_admin: id_admin
+    						}
+    					}).done(function(e) {
+    						console.log(e);
+    						notifikasi('#alertNotif', e.message, !e.status);
+    						datatable.ajax.reload();
+    					}).fail(function(e) {
+    						console.log('gagal');
+    						console.log(e);
+    						var message = 'Terjadi Kesalahan. #JSMP01';
+    						notifikasi('#alertNotif', message, true);
     					});
     				}
     				return false;

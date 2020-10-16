@@ -94,6 +94,32 @@ class AdminModel extends CI_Model
 		// return	$this->db->query($sql2);
 		// die();
 	}
+	public function getAdminById($id_admin)
+	{
+		$this->db->where('id_user', $id_admin);
+		return $this->db->get('user')->result();
+	}
+	public function hapusDariTable($table,$id_admin)
+	{
+		// // $this->db->trans_start();
+
+		// $this->db->where('id_admin', $id_admin)
+		// 	->delete('admin');
+		// $this->db->reset_query();
+		// $this->db->where('id_admin', $id_admin)
+		// 	->delete('admin_role');
+
+		// if ($this->db->trans_status() === FALSE) {
+		// 	$this->db->trans_rollback();
+		// 	return false;
+		// } else {
+		// 	$this->db->trans_commit();
+		// 	return true;
+		// }
+		$this->db->where('id_user', $id_admin);
+		$this->db->delete($table);
+
+	}
 
 
     

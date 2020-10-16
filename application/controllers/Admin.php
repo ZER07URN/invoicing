@@ -163,6 +163,29 @@ public function edit_admin()
 			'message' => $message,
 			'errorInputs' => $errorInputs
 		));
+}
+
+public function hapusAdmin()
+{
+	
+		$id_user = $this->input->post('id_user', true);
+		$data = $this->AdminModel->getAdminById($id_user);
+		// var_dump($data);die();
+		$status = false;
+		$message = 'Gagal menghapus Admin!';
+		if (count($data) == 0) {
+			$message .= '<br>Tidak terdapat admin yang dimaksud.';
+		} else {
+			$this->AdminModel->hapusDariTable('user',$id_user);			
+				$status = true;
+				$message = 'Berhasil menghapus Admin: <b>' . $data[0]->nama_admin . '</b>';
+
+		}
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+		));
 	}
 
 
