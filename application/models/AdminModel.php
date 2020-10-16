@@ -83,6 +83,17 @@ class AdminModel extends CI_Model
 
 		);
 	}
+	public function editDariTable($table,$in, $id_admin)
+	{
+		$this->db->where('id_user', $id_admin);
+
+		return $this->db->update($table, $in);
+
+		//  $sql2 = "UPDATE admin WHERE id_admin='$id_admin'";
+
+		// return	$this->db->query($sql2);
+		// die();
+	}
 
 
     

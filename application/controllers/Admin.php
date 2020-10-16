@@ -73,7 +73,7 @@ public function tambah_admin()
 
 }
 public function getAllProduk()
-	{
+{
 		$dt = $this->AdminModel->data_AllAdmin($_POST);
 		$bu = base_url();
 		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
@@ -85,14 +85,20 @@ public function getAllProduk()
 		$no = $start + 1;
 		$status="";
 		foreach ($dt['data']->result() as $row) {
+			if($row->status==1){
+				$status = "<span class='btn btn-rounded btn-outline-success px-3 btn-sm'>Aktif</span>";
+			}else{
+				$status = "<span class='btn btn-rounded btn-outline-warning px-3 btn-sm'>Non Aktiv</span>";
+			}
+
 
 			$fields = array($no++);
 			$fields[] = $row->nama_admin . '<br>';
 			$fields[] = $row->email . '<br>';
-			$fields[] = $row->status . '<br>';
+			$fields[] = $status . '<br>';
 			$fields[] = $row->created . '<br>';
 			$fields[] = '
-			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target=".bs-example-modal-lg" 
+			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
 			data-id_user="' . $row->id_user . '" 
 			data-nama_admin="' . $row->nama_admin . '" 
 			data-email="' . $row->email . '" 
@@ -113,7 +119,54 @@ public function getAllProduk()
 		echo json_encode($datatable);
 
 		exit();
+}
+
+public function edit_admin()
+{
+	// var_dump($_POST);die;
+		$id_admin = $this->input->post('id_admin', TRUE);	
+		$password = $this->input->post('password', TRUE);
+		$email = $this->input->post('email', TRUE);
+		$nama = $this->input->post('nama', TRUE);
+		$stat = $this->input->post('status', TRUE);
+
+		$message = 'Gagal Update!<br>Silahkan lengkapi data yang diperlukan.';
+		$errorInputs = array();
+		$status = true;
+		// var_dump($transaksi_ldu_lihat);die();
+		$in = array(
+			'nama_admin' => $nama,
+			'password' =>  $password,
+			'email' => $email,
+			'status' => $stat,
+		);
+
+		if (empty($nama)) {
+			$status = false;
+			$errorInputs[] = array('#username', 'Silahkan pilih username');
+		}
+		if (empty($password)) {
+			$status = false;
+			$errorInputs[] = array('#password', 'Silahkan Masukan Password');
+		}
+		// var_dump($in);die();
+
+		if ($status) {
+			$this->AdminModel->editDariTable('user',$in, $id_admin);		
+					$message = 'Berhasil Update Admin ';
+				} 
+		 else {
+			$message = 'Gagal Meng-Update Admin! ';
+		}
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+			'errorInputs' => $errorInputs
+		));
 	}
+
+
+
 
         
 }
