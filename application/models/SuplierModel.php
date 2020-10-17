@@ -107,11 +107,6 @@ public function login(){
 		$this->db->where('id_supplier', $id_admin);
 		return $this->db->get('supplier')->result();
 	}
-	public function hapusDariTable($table, $id_admin,$id_table)
-	{
-		$this->db->where($id_table, $id_admin);
-		$this->db->delete($table);
-	}
                         
                             
                         
