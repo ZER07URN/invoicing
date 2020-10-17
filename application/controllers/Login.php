@@ -11,10 +11,36 @@ class Login extends CI_Controller {
 
 		$this->load->model('AdminModel');
 	}
-
+	public function buat_captcha()
+	{
+		$vals = array(
+			'img_path' => './captcha/',
+			'img_url' => base_url() . 'captcha/',
+			'font_path' => './font/timesbd.ttf',
+			'img_width' => '150',
+			'img_height' => 50,
+			'word_length'   => 3,
+			'pool'          => '0123456789',
+			'font_size'     => 19,
+			'expiration' => 60,     
+			   'colors'        => array(
+				'background' => array(255, 255, 255),
+				'border' => array(255, 255, 255),
+				'text' => array(0, 0, 0),
+				'grid' => array(255, 40, 40)
+			)
+		);
+		$cap = create_captcha($vals);
+		return $cap;
+	}
+	
 public function index()
 {
-		// $this->load->view('templates/header');     
+		// $this->load->view('templates/header');    
+		$cap = $this->buat_captcha();
+		$data['captcha'] = $this->buat_captcha();
+		// var_dump($cap);die;
+		// $data['cap_img'] = $cap['image']; 
 		$data['content'] = 'login';
 
 		$this->load->view('templates/indexLogin', $data);      
@@ -43,15 +69,23 @@ public function index()
 
 	public function login_proses()
 	{
+		// var_dump($_POST);die;
 		$this->load->library('form_validation');
 		$username = $this->input->post('email', true);
 		$password = $this->input->post('password', true);
+		$captcha = $this->input->post('captcha', true);
+		$code = $this->input->post('code', true);
 		
 		$data = $this->AdminModel->login($username);
 		$status = false;
 		$message = 'Email tidak ditemukan!';
 		// var_dump($data->num_rows());die;
+		if($code != $captcha){
+			$message = 'Captcha Tidak Sama!';
+			$status = false;
+		}else{
 
+		
 		if ($data->num_rows() == 1) {
 			$r = $data->row();
 			// var_dump($r->status==0);die;
@@ -78,6 +112,7 @@ public function index()
 			} else {
 				$message = 'Username & password tidak cocok!';
 			}
+		}
 
 		echo json_encode(array(
 			'status' => $status,

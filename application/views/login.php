@@ -17,6 +17,12 @@
 									<label for="inputPassword" class="sr-only">Password</label>
 									<input type="password" id="password" name="password" class="form-control form-control-lg border-0" placeholder="Password" required="">
 								</div>
+								<tr>
+									<?php echo $captcha['image'] ?>
+									<!-- <input type="text" name="captcha"> -->
+									<input class="form-control" type="text" name="captcha" id="captcha">
+									<input type="hidden" id="code" value="<?php echo $captcha['word'] ?>" name="code">
+								</tr>
 							</div>
 							<div class="my-4 row">
 								<div class="col-12 col-md">
@@ -50,10 +56,12 @@
 
 					var email = $('#email').val();
 					var password = $('#password').val();
+					var code = $('#code').val();
+					var captcha = $('#captcha').val();
 
-					// console.log(re);
+					// console.log(code, captcha);
 
-					if (email == '' || password == '') {
+					if (email == '' || password == '' || captcha == '') {
 						Swal.fire({
 							icon: 'error',
 							title: 'Maaf!',
@@ -70,6 +78,8 @@
 							data: {
 								email: email,
 								password: password,
+								captcha: captcha,
+								code: code,
 							},
 						}).done(function(e) {
 							console.log(e);
