@@ -132,6 +132,27 @@ class Produk extends CI_Controller {
 			'errorInputs' => $errorInputs
 		));
 	}
+	public function hapus()
+	{
+
+		$id_user = $this->input->post('id_user', true);
+		$data = $this->ProdukModel->getById($id_user);
+		// var_dump($data);die();
+		$status = false;
+		$message = 'Gagal menghapus Produk!';
+		if (count($data) == 0) {
+			$message .= '<br>Tidak terdapat Produk yang dimaksud.';
+		} else {
+			$this->ProdukModel->hapusDariTable('produk', $id_user,'id_produk');
+			$status = true;
+			$message = 'Berhasil menghapus Produk: <b>' . $data[0]->nama_produk . '</b>';
+		}
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+		));
+	}
 
         
 }

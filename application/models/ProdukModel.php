@@ -100,6 +100,16 @@ public function login(){
 		// return	$this->db->query($sql2);
 		// die();
 	}
+	public function getById($id_admin)
+	{
+		$this->db->where('id_produk', $id_admin);
+		return $this->db->get('produk')->result();
+	}
+	public function hapusDariTable($table, $id_admin,$id_table)
+	{
+		$this->db->where($id_table, $id_admin);
+		$this->db->delete($table);
+	}
                         
                             
                         

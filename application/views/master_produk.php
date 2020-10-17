@@ -332,8 +332,8 @@
     					return false;
     				});
     				$('body').on('click', '.hapus', function() {
-    					var id_user = $(this).data('id_user');
-    					var nama_admin = $(this).data('nama_admin');
+    					var id_user = $(this).data('id_produk');
+    					var nama_admin = $(this).data('nama_produk');
 
     					Swal.fire({
     						title: 'Are you sure?',
@@ -348,7 +348,7 @@
 
     						if (result.isConfirmed) {
     							$.ajax({
-    								url: '<?= $bu ?>Admin/hapusAdmin ',
+    								url: '<?= $bu ?>Produk/hapus ',
     								dataType: 'json',
     								method: 'POST',
     								data: {

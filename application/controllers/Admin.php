@@ -186,7 +186,7 @@ public function hapusAdmin()
 			'status' => $status,
 			'message' => $message,
 		));
-	}
+}
 
 
 

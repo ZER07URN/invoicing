@@ -508,7 +508,7 @@
 
     				Swal.fire({
     					title: 'Are you sure?',
-    					text: "Anda akan Menghapus Produk: " + nama_admin,
+    					text: "Anda akan Menghapus Admin: " + nama_admin,
     					icon: 'warning',
     					showCancelButton: true,
     					confirmButtonColor: '#3085d6',
