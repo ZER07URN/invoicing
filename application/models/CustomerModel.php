@@ -78,11 +78,11 @@ public function login(){
 
 		);
 	}
-	public function tambah_admin($in)
+	public function tambah($in)
 	{
 		// var_dump($in);die;
 
-		if ($this->db->insert('kendaraan', $in)) {
+		if ($this->db->insert('custumer', $in)) {
 			$status =  true;
 		} else {
 			var_dump($this->db->error());

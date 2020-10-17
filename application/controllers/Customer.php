@@ -67,15 +67,19 @@ class Customer extends CI_Controller {
 	{
 		$username = $this->input->post('nama', TRUE);
 		$stat = $this->input->post('status', TRUE);
+		$no_telepon = $this->input->post('no_telepon', TRUE);
+		$alamat = $this->input->post('alamat', TRUE);
 
-		$message = 'Gagal menambahkan Produk Baru!<br>Silahkan lengkapi data yang diperlukan.';
+		$message = 'Gagal menambahkan Customer Baru!<br>Silahkan lengkapi data yang diperlukan.';
 		$errorInputs = array();
 		$status = true;
 
 
 		$in = array(
-			'nama_produk' => $username,
+			'nama_custumer' => $username,
 			'status' => $stat,
+			'alamat' => $alamat,
+			'no_telepon' => $no_telepon,
 		);
 
 		if (empty($username)) {
@@ -83,11 +87,11 @@ class Customer extends CI_Controller {
 			$errorInputs[] = array('#username', 'Silahkan pilih username');
 		}
 		if ($status) {
-			$this->ProdukModel->tambah_admin($in);
+			$this->CustomerModel->tambah($in);
 			$status = true;
-			$message = 'Berhasil Menambahkan Produk.';
+			$message = 'Berhasil Menambahkan .';
 		} else {
-			$message = 'Gagal menambahkan Produk Baru!<br>Silahkan lengkapi data yang diperlukan.';
+			$message = 'Gagal menambahkan data Baru!<br>Silahkan lengkapi data yang diperlukan.';
 
 			$message = 'Gagal ';
 			$status = false;
