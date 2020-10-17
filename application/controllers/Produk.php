@@ -60,6 +60,78 @@ class Produk extends CI_Controller {
 
 		exit();
 	}
+	public function tambah()
+	{
+		$username = $this->input->post('nama', TRUE);
+		$stat = $this->input->post('status', TRUE);
+
+		$message = 'Gagal menambahkan Produk Baru!<br>Silahkan lengkapi data yang diperlukan.';
+		$errorInputs = array();
+		$status = true;
+
+
+		$in = array(
+			'nama_produk' => $username,
+			'status' => $stat,
+		);
+
+		if (empty($username)) {
+			$status = false;
+			$errorInputs[] = array('#username', 'Silahkan pilih username');
+		}
+		if ($status) {
+			$this->ProdukModel->tambah_admin($in);
+			$status = true;
+			$message = 'Berhasil Menambahkan Produk.';
+		} else {
+			$message = 'Gagal menambahkan Produk Baru!<br>Silahkan lengkapi data yang diperlukan.';
+
+			$message = 'Gagal ';
+			$status = false;
+		}
+
+
+
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+			'errorInputs' => $errorInputs
+		));
+	}
+	public function edit()
+	{
+		// var_dump($_POST);die;
+		$id_admin = $this->input->post('id_admin', TRUE);
+		$nama = $this->input->post('nama', TRUE);
+		$stat = $this->input->post('status', TRUE);
+
+		$message = 'Gagal Update!<br>Silahkan lengkapi data yang diperlukan.';
+		$errorInputs = array();
+		$status = true;
+		// var_dump($transaksi_ldu_lihat);die();
+		$in = array(
+			'nama_produk' => $nama,
+			'status' => $stat,
+		);
+
+		if (empty($nama)) {
+			$status = false;
+			$errorInputs[] = array('#username', 'Silahkan pilih username');
+		}
+		// var_dump($in);die();
+
+		if ($status) {
+			$this->ProdukModel->editDariTable('produk', $in, $id_admin,'id_produk');
+			$message = 'Berhasil Update Produk ';
+		} else {
+			$message = 'Gagal Meng-Update Produk! ';
+		}
+		echo json_encode(array(
+			'status' => $status,
+			'message' => $message,
+			'errorInputs' => $errorInputs
+		));
+	}
 
         
 }

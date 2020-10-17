@@ -12,7 +12,7 @@ public function login(){
 
 	{
 		$columns = array(
-			'nama_produk'
+			'nama_produk','status'
 		);
 		// untuk search
 		$columnsSearch = array(
@@ -75,6 +75,30 @@ public function login(){
 			'data' => $data,
 
 		);
+	}
+	public function tambah_admin($in)
+	{
+		// var_dump($in);die;
+
+		if ($this->db->insert('produk', $in)) {
+			$status =  true;
+		} else {
+			var_dump($this->db->error());
+			die();
+			$status = false;
+		}
+		return $status;
+	}
+	public function editDariTable($table, $in, $id_admin,$id_table)
+	{
+		$this->db->where($id_table, $id_admin);
+
+		return $this->db->update($table, $in);
+
+		//  $sql2 = "UPDATE admin WHERE id_admin='$id_admin'";
+
+		// return	$this->db->query($sql2);
+		// die();
 	}
                         
                             
