@@ -64,7 +64,7 @@
     					<div class="col text-center">
     						<img src="img/logo.png" alt="" class="mt-4">
     						<br>
-    						<h5 class="mt-4">Customer</h5>
+    						<h5 class="mt-4">Suplier</h5>
     					</div>
     					<button type="button" class="close absolute" data-dismiss="modal" aria-label="Close">
     						<span aria-hidden="true">&times;</span>
@@ -75,40 +75,16 @@
     						<div class="col-md-10 mx-auto">
     							<div class="form-group row">
     								<div class="col-lg-12 col-md-12">
-    									<label>Nama Customer</label>
+    									<label>Nama Suplier</label>
     									<input type="text" class="form-control" name="nama" id="nama" placeholder="">
     									<input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="">
     								</div>
     								<div class="col-lg-12 col-md-12">
-    									<div class="row">
-    										<div class="col-lg-12">
-    											<label>No Telepon</label>
-    											<input type="number" class="form-control" name="no_telpon" id="no_telpon" placeholder="">
-    										</div>
-    									</div>
-    								</div>
-    							</div>
-    							<div class="form-group row">
-    								<div class="col-lg-12 col-md-12">
-    									<div class="row">
-    										<div class="col-lg-12">
-    											<label>Status</label>
-    											<select class="form-control " name="status" id="status" data-live-search="true" tabindex="-1" aria-hidden="true">
-    												<option value=1>Aktif</option>
-    												<option value=0>NonAktif</option>
-    											</select>
-    										</div>
-    									</div>
-    								</div>
-    							</div>
-    							<div class="form-group row">
-    								<div class="col-lg-12 col-md-12">
-    									<div class="row">
-    										<div class="col-lg-12">
-    											<label>Alamat</label>
-    											<textarea id="alamat" class="form-control" name="alamat" rows="3"></textarea>
-
-    										</div>
+    										<label>Status</label>
+    										<select class="form-control " name="status" id="status" data-live-search="true" tabindex="-1" aria-hidden="true">
+    											<option value=1>Aktif</option>
+    											<option value=0>NonAktif</option>
+    										</select>
     									</div>
     								</div>
     							</div>
@@ -220,9 +196,7 @@
     					$('small.text-danger').html('');
     					var status = $('#status').val();
     					var nama = $('#nama').val();
-    					var no_telepon = $('#no_telpon').val();
-    					var alamat = $('#alamat').val();
-    					if (nama == '' || status == '' || no_telepon == "" || status == "") {
+    					if (nama == '' || status == '') {
     						Swal.fire({
     							icon: 'error',
     							title: 'Maaf!',
@@ -231,14 +205,12 @@
     					} else {
 
     						$.ajax({
-    							url: '<?= $bu ?>Customer/tambah ',
+    							url: '<?= $bu ?>Suplier/tambah ',
     							dataType: 'json',
     							method: 'POST',
     							data: {
     								nama: nama,
     								status: status,
-    								no_telepon: no_telepon,
-    								alamat: alamat,
 
     							}
     						}).done(function(e) {

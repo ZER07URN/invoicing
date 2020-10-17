@@ -82,7 +82,7 @@ public function login(){
 	{
 		// var_dump($in);die;
 
-		if ($this->db->insert('custumer', $in)) {
+		if ($this->db->insert('supplier', $in)) {
 			$status =  true;
 		} else {
 			var_dump($this->db->error());

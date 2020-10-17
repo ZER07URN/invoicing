@@ -68,19 +68,16 @@ class Suplier extends CI_Controller {
 	{
 		$username = $this->input->post('nama', TRUE);
 		$stat = $this->input->post('status', TRUE);
-		$no_telepon = $this->input->post('no_telepon', TRUE);
-		$alamat = $this->input->post('alamat', TRUE);
 
-		$message = 'Gagal menambahkan Customer Baru!<br>Silahkan lengkapi data yang diperlukan.';
+		$message = 'Gagal menambahkan Suplier Baru!<br>Silahkan lengkapi data yang diperlukan.';
 		$errorInputs = array();
 		$status = true;
 
 
 		$in = array(
-			'nama_custumer' => $username,
+			'nama_supplier' => $username,
 			'status' => $stat,
-			'alamat' => $alamat,
-			'no_telepon' => $no_telepon,
+			'modified' =>2,
 		);
 
 		if (empty($username)) {
@@ -88,7 +85,7 @@ class Suplier extends CI_Controller {
 			$errorInputs[] = array('#username', 'Silahkan pilih username');
 		}
 		if ($status) {
-			$this->CustomerModel->tambah($in);
+			$this->SuplierModel->tambah($in);
 			$status = true;
 			$message = 'Berhasil Menambahkan .';
 		} else {
