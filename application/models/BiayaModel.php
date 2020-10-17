@@ -103,8 +103,8 @@ public function login(){
 	}
 	public function getById($id_admin)
 	{
-		$this->db->where('id_supplier', $id_admin);
-		return $this->db->get('supplier')->result();
+		$this->db->where('id_biaya', $id_admin);
+		return $this->db->get('biaya_opr')->result();
 	}
                         
                             

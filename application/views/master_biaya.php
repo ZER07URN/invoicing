@@ -334,8 +334,8 @@
     				return false;
     			});
     			$('body').on('click', '.hapus', function() {
-    				var id_user = $(this).data('id_supplier');
-    				var nama_admin = $(this).data('nama_supplier');
+    				var id_user = $(this).data('id_biaya');
+    				var nama_admin = $(this).data('nama_biaya');
     				// console.log(id_user);
     				Swal.fire({
     					title: 'Are you sure?',
@@ -350,7 +350,7 @@
 
     					if (result.isConfirmed) {
     						$.ajax({
-    							url: '<?= $bu ?>Suplier/hapus ',
+    							url: '<?= $bu ?>Biaya/hapus ',
     							dataType: 'json',
     							method: 'POST',
     							data: {

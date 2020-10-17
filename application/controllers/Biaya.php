@@ -149,16 +149,16 @@ class Biaya extends CI_Controller {
 	{
 
 		$id_user = $this->input->post('id_user', true);
-		$data = $this->SuplierModel->getById($id_user);
+		$data = $this->BiayaModel->getById($id_user);
 		// var_dump($data);die();
 		$status = false;
 		$message = 'Gagal menghapus Data!';
 		if (count($data) == 0) {
 			$message .= '<br>Tidak terdapat Data yang dimaksud.';
 		} else {
-			$this->ProdukModel->hapusDariTable('supplier', $id_user,'id_supplier');
+			$this->ProdukModel->hapusDariTable('biaya_opr', $id_user,'id_biaya');
 			$status = true;
-			$message = 'Berhasil menghapus Dara: <b>' . $data[0]->nama_supplier . '</b>';
+			$message = 'Berhasil menghapus Dara: <b>' . $data[0]->nama_biaya . '</b>';
 		}
 
 		echo json_encode(array(
