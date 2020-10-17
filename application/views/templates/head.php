@@ -47,7 +47,7 @@
 
 <body class="fixed-header sidebar-right-close">
     <!-- page loader -->
-    <div class="loader justify-content-center pink-gradient">
+    <!-- <div class="loader justify-content-center pink-gradient">
         <div class="align-self-center text-center">
             <div class="logo-img-loader">
                 <img src="<?php echo base_url() . "templates/"; ?>img/loader-hole.png" alt="" class="logo-image">
@@ -56,5 +56,5 @@
             <h2 class="mt-3 font-weight-light">GoTRI</h2>
             <p class="mt-2 text-white">Awesome things getting ready...</p>
         </div>
-    </div>
+    </div> -->
     <!-- page loader ends  -->
