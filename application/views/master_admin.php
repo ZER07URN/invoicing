@@ -357,7 +357,7 @@
     					Swal.fire({
     						icon: 'error',
     						title: 'Maaf!',
-    						text: 'Harap Lenfkapi Semua Field!',
+    						text: 'Harap Lengkapi Semua Field!',
     					})
     				} else {
 
@@ -442,7 +442,7 @@
     					Swal.fire({
     						icon: 'error',
     						title: 'Maaf!',
-    						text: 'Harap Lenfkapi Semua Field!',
+    						text: 'Harap Lengkapi Semua Field!',
     					})
     				} else {
 

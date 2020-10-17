@@ -200,7 +200,7 @@
     					Swal.fire({
     						icon: 'error',
     						title: 'Maaf!',
-    						text: 'Harap Lenfkapi Semua Field!',
+    						text: 'Harap Lengkapi Semua Field!',
     					})
     				} else {
 
@@ -229,7 +229,7 @@
     							$('#modal').modal('hide');
     							datatable.ajax.reload();
     							Swal.fire({
-    								title: 'Sukse!',
+    								title: 'Sukses!',
     								text: e.message,
     								icon: 'success',
     								confirmButtonText: 'Cool'
@@ -277,7 +277,7 @@
     					Swal.fire({
     						icon: 'error',
     						title: 'Maaf!',
-    						text: 'Harap Lenfkapi Semua Field!',
+    						text: 'Harap Lengkapi Semua Field!',
     					})
     				} else {
 

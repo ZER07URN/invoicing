@@ -120,6 +120,13 @@ class AdminModel extends CI_Model
 		$this->db->delete($table);
 
 	}
+	public function login($username)
+	{
+		$this->db->select('*');
+		$this->db->where('email', $username);
+		// $this->db->where('password', $password);
+		return $this->db->get('user');
+	}
 
 
     

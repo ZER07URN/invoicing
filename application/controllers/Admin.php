@@ -36,7 +36,7 @@ public function tambah_admin()
     $in = array(
       'nama_admin' => $username,
       'status' => $stat,
-      'password' =>   md5($password),
+      'password' =>   $this->bizEncrypt($password),
 	  'email' => $email,
 	   'created' => date('Y-m-d H:i:s'),
 	);
@@ -104,7 +104,7 @@ public function getAllProduk()
 			data-email="' . $row->email . '" 
 			data-status="' . $row->status . '" 
 			data-created="' . $row->created . '" 
-			data-password="' . $row->password . '" 		
+			data-password="' . $this->bizDecrypt($row->password) . '" 		
 			></i> Ubah</button>
 
         <button class="btn btn-round btn-danger hapus" data-id_user="' . $row->id_user . '" data-nama_admin="' . $row->nama_admin . '"
@@ -188,7 +188,38 @@ public function hapusAdmin()
 		));
 }
 
+	public function bizEncrypt($plaintext)
+	{
+		$tahun = date('Y');
+		$bulan = date('m');
+		$hari = date('d');
+		$jam = date('H');
+		$menit = date('i');
+		$detik = date('s');
+		$pool = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_+&';
 
+		$word1 = '';
+		for ($i = 0; $i < 4; $i++) {
+			$word1 .= substr($pool, mt_rand(0, strlen($pool) - 1), 1);
+		}
+
+		$plain = $hari . $bulan . $tahun . $word1 . base64_encode(base64_encode($plaintext)) . $detik . $menit . $jam;
+		$enc = base64_encode($plain);
+		return $enc;
+	}
+
+	public function bizDecrypt($enc)
+	{
+		$dec64 = base64_decode($enc);
+		$substr1 = substr($dec64, 12, strlen($dec64) - 12);
+		$substr2 = substr($substr1, 0, strlen($substr1) - 6);
+		$dec = base64_decode(base64_decode($substr2));
+		return $dec;
+	}
+	public function passwordMatch($plain_password, $encrypted)
+	{
+		return $plain_password == $this->bizDecrypt($encrypted);
+	}
 
 
         
