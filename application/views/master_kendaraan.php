@@ -280,13 +280,15 @@
     					$('#btnUbah').show();
 
 
-    					var id_user = $(this).data('id_produk');
-    					var nama = $(this).data('nama_produk');
+    					var id_user = $(this).data('id_kendaraan');
+    					var nama = $(this).data('nama_kendaraan');
     					var status = $(this).data('status');
+    					var jenis = $(this).data('jenis');
 
     					$('#id_user').val(id_user);
     					$('#status').val(status);
     					$('#nama').val(nama);
+    					$('#jenis').val(jenis);
 
     				});
 
@@ -295,6 +297,7 @@
     					var nama = $('#nama').val();
     					var id_user = $('#id_user').val();
     					var status = $('#status').val();
+    					var jenis = $('#jenis').val();
 
     					if (nama == '' || status == '') {
     						Swal.fire({
@@ -305,13 +308,14 @@
     					} else {
 
     						$.ajax({
-    							url: '<?= $bu ?>Produk/edit ',
+    							url: '<?= $bu ?>Kendaraan/edit ',
     							dataType: 'json',
     							method: 'POST',
     							data: {
     								id_admin: id_user,
     								nama: nama,
     								status: status,
+    								jenis: jenis,
     							}
     						}).done(function(e) {
     							console.log('berhasil');

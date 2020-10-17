@@ -116,14 +116,18 @@ class Kendaraan extends CI_Controller {
 		$id_admin = $this->input->post('id_admin', TRUE);
 		$nama = $this->input->post('nama', TRUE);
 		$stat = $this->input->post('status', TRUE);
+		$jenis = $this->input->post('jenis', TRUE);
 
 		$message = 'Gagal Update!<br>Silahkan lengkapi data yang diperlukan.';
 		$errorInputs = array();
 		$status = true;
 		// var_dump($transaksi_ldu_lihat);die();
 		$in = array(
-			'nama_produk' => $nama,
+			'nama_kendaraan' => $nama,
 			'status' => $stat,
+			'jenis' => $jenis,
+			'updated' => date('Y-m-d H:i:s'),
+			'updatedby' => 2,
 		);
 
 		if (empty($nama)) {
@@ -133,7 +137,7 @@ class Kendaraan extends CI_Controller {
 		// var_dump($in);die();
 
 		if ($status) {
-			$this->ProdukModel->editDariTable('produk', $in, $id_admin,'id_produk');
+			$this->KendaraanModel->editDariTable('kendaraan', $in, $id_admin,'id_kendaraan');
 			$message = 'Berhasil Update Produk ';
 		} else {
 			$message = 'Gagal Meng-Update Produk! ';
