@@ -361,12 +361,12 @@
     					return false;
     				});
     				$('body').on('click', '.hapus', function() {
-    					var id_user = $(this).data('id_produk');
-    					var nama_admin = $(this).data('nama_produk');
+    					var id_user = $(this).data('id_kendaraan');
+    					var nama_admin = $(this).data('nama_kendaraan');
 
     					Swal.fire({
     						title: 'Are you sure?',
-    						text: "Anda akan Menghapus Produk: " + nama_admin,
+    						text: "Anda akan Menghapus Kendaraan: " + nama_admin,
     						icon: 'warning',
     						showCancelButton: true,
     						confirmButtonColor: '#3085d6',
@@ -377,7 +377,7 @@
 
     						if (result.isConfirmed) {
     							$.ajax({
-    								url: '<?= $bu ?>Produk/hapus ',
+    								url: '<?= $bu ?>Kendaraan/hapus ',
     								dataType: 'json',
     								method: 'POST',
     								data: {

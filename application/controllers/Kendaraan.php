@@ -9,6 +9,7 @@ class Kendaraan extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('KendaraanModel');
+		$this->load->model('ProdukModel');
 	}
 	public function index()
 	{
@@ -152,16 +153,16 @@ class Kendaraan extends CI_Controller {
 	{
 
 		$id_user = $this->input->post('id_user', true);
-		$data = $this->ProdukModel->getById($id_user);
+		$data = $this->KendaraanModel->getById($id_user);
 		// var_dump($data);die();
 		$status = false;
-		$message = 'Gagal menghapus Produk!';
+		$message = 'Gagal menghapus Kendaraan!';
 		if (count($data) == 0) {
-			$message .= '<br>Tidak terdapat Produk yang dimaksud.';
+			$message .= '<br>Tidak terdapat Kendaraan yang dimaksud.';
 		} else {
-			$this->ProdukModel->hapusDariTable('produk', $id_user,'id_produk');
+			$this->ProdukModel->hapusDariTable('kendaraan', $id_user,'id_kendaraan');
 			$status = true;
-			$message = 'Berhasil menghapus Produk: <b>' . $data[0]->nama_produk . '</b>';
+			$message = 'Berhasil menghapus Kendaraan: <b>' . $data[0]->nama_kendaraan . '</b>';
 		}
 
 		echo json_encode(array(
