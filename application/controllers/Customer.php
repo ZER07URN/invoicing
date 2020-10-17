@@ -148,16 +148,16 @@ class Customer extends CI_Controller {
 	{
 
 		$id_user = $this->input->post('id_user', true);
-		$data = $this->ProdukModel->getById($id_user);
+		$data = $this->CustomerModel->getById($id_user);
 		// var_dump($data);die();
 		$status = false;
-		$message = 'Gagal menghapus Produk!';
+		$message = 'Gagal menghapus Data!';
 		if (count($data) == 0) {
-			$message .= '<br>Tidak terdapat Produk yang dimaksud.';
+			$message .= '<br>Tidak terdapat Data yang dimaksud.';
 		} else {
-			$this->ProdukModel->hapusDariTable('produk', $id_user,'id_produk');
+			$this->ProdukModel->hapusDariTable('custumer', $id_user,'id_custumer');
 			$status = true;
-			$message = 'Berhasil menghapus Produk: <b>' . $data[0]->nama_produk . '</b>';
+			$message = 'Berhasil menghapus Dara: <b>' . $data[0]->nama_custumer . '</b>';
 		}
 
 		echo json_encode(array(
