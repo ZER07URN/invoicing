@@ -104,8 +104,8 @@ public function login(){
 	}
 	public function getById($id_admin)
 	{
-		$this->db->where('id_custumer', $id_admin);
-		return $this->db->get('custumer')->result();
+		$this->db->where('id_supplier', $id_admin);
+		return $this->db->get('supplier')->result();
 	}
 	public function hapusDariTable($table, $id_admin,$id_table)
 	{

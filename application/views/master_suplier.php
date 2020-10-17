@@ -334,12 +334,12 @@
     					return false;
     				});
     				$('body').on('click', '.hapus', function() {
-    					var id_user = $(this).data('id_custumer');
-    					var nama_admin = $(this).data('nama_custumer');
+    					var id_user = $(this).data('id_supplier');
+    					var nama_admin = $(this).data('nama_supplier');
     					// console.log(id_user);
     					Swal.fire({
     						title: 'Are you sure?',
-    						text: "Anda akan Menghapus custumer: " + nama_admin,
+    						text: "Anda akan Menghapus : " + nama_admin,
     						icon: 'warning',
     						showCancelButton: true,
     						confirmButtonColor: '#3085d6',
@@ -350,7 +350,7 @@
 
     						if (result.isConfirmed) {
     							$.ajax({
-    								url: '<?= $bu ?>Customer/hapus ',
+    								url: '<?= $bu ?>Suplier/hapus ',
     								dataType: 'json',
     								method: 'POST',
     								data: {

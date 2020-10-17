@@ -142,16 +142,16 @@ class Suplier extends CI_Controller {
 	{
 
 		$id_user = $this->input->post('id_user', true);
-		$data = $this->CustomerModel->getById($id_user);
+		$data = $this->SuplierModel->getById($id_user);
 		// var_dump($data);die();
 		$status = false;
 		$message = 'Gagal menghapus Data!';
 		if (count($data) == 0) {
 			$message .= '<br>Tidak terdapat Data yang dimaksud.';
 		} else {
-			$this->ProdukModel->hapusDariTable('custumer', $id_user,'id_custumer');
+			$this->ProdukModel->hapusDariTable('supplier', $id_user,'id_supplier');
 			$status = true;
-			$message = 'Berhasil menghapus Dara: <b>' . $data[0]->nama_custumer . '</b>';
+			$message = 'Berhasil menghapus Dara: <b>' . $data[0]->nama_supplier . '</b>';
 		}
 
 		echo json_encode(array(
