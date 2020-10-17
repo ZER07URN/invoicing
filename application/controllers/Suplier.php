@@ -109,18 +109,15 @@ class Suplier extends CI_Controller {
 		$id_admin = $this->input->post('id_admin', TRUE);
 		$nama = $this->input->post('nama', TRUE);
 		$stat = $this->input->post('status', TRUE);
-		$alamat = $this->input->post('alamat', TRUE);
-		$no_telepon = $this->input->post('no_telepon', TRUE);
 
 		$message = 'Gagal Update!<br>Silahkan lengkapi data yang diperlukan.';
 		$errorInputs = array();
 		$status = true;
 		// var_dump($transaksi_ldu_lihat);die();
 		$in = array(
-			'nama_custumer' => $nama,
+			'nama_supplier' => $nama,
 			'status' => $stat,
-			'no_telepon' => $no_telepon,
-			'alamat' => $alamat,
+			'modified' => 99,
 		);
 
 		if (empty($nama)) {
@@ -130,7 +127,7 @@ class Suplier extends CI_Controller {
 		// var_dump($in);die();
 
 		if ($status) {
-			$this->ProdukModel->editDariTable('custumer', $in, $id_admin, 'id_custumer');
+			$this->ProdukModel->editDariTable('supplier', $in, $id_admin, 'id_supplier');
 			$message = 'Berhasil Update Data ';
 		} else {
 			$message = 'Gagal Meng-Update Data! ';
