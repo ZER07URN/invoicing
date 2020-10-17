@@ -48,6 +48,7 @@ class Customer extends CI_Controller {
 			data-id_custumer="' . $row->id_custumer . '" 
 			data-nama_custumer="' . $row->nama_custumer . '" 
 			data-status="' . $row->status . '"  			data-no_telepon="' . $row->no_telepon . '"  
+			data-alamat="' . $row->alamat . '"  
 			></i> Ubah</button>
 
         <button class="btn btn-round btn-danger hapus" data-id_custumer="' . $row->id_custumer . '" data-nama_custumer="' . $row->nama_custumer . '"
@@ -111,14 +112,18 @@ class Customer extends CI_Controller {
 		$id_admin = $this->input->post('id_admin', TRUE);
 		$nama = $this->input->post('nama', TRUE);
 		$stat = $this->input->post('status', TRUE);
+		$alamat = $this->input->post('alamat', TRUE);
+		$no_telepon = $this->input->post('no_telepon', TRUE);
 
 		$message = 'Gagal Update!<br>Silahkan lengkapi data yang diperlukan.';
 		$errorInputs = array();
 		$status = true;
 		// var_dump($transaksi_ldu_lihat);die();
 		$in = array(
-			'nama_produk' => $nama,
+			'nama_custumer' => $nama,
 			'status' => $stat,
+			'no_telepon' => $no_telepon,
+			'alamat' => $alamat,
 		);
 
 		if (empty($nama)) {
@@ -128,10 +133,10 @@ class Customer extends CI_Controller {
 		// var_dump($in);die();
 
 		if ($status) {
-			$this->ProdukModel->editDariTable('produk', $in, $id_admin,'id_produk');
-			$message = 'Berhasil Update Produk ';
+			$this->ProdukModel->editDariTable('custumer', $in, $id_admin, 'id_custumer');
+			$message = 'Berhasil Update Data ';
 		} else {
-			$message = 'Gagal Meng-Update Produk! ';
+			$message = 'Gagal Meng-Update Data! ';
 		}
 		echo json_encode(array(
 			'status' => $status,

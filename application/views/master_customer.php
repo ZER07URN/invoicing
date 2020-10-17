@@ -286,15 +286,17 @@
     					$('#btnUbah').show();
 
 
-    					var id_user = $(this).data('id_kendaraan');
-    					var nama = $(this).data('nama_kendaraan');
+    					var id_user = $(this).data('id_custumer');
+    					var nama = $(this).data('nama_custumer');
     					var status = $(this).data('status');
-    					var jenis = $(this).data('jenis');
+    					var no_telepon = $(this).data('no_telepon');
+    					var alamat = $(this).data('alamat');
 
     					$('#id_user').val(id_user);
     					$('#status').val(status);
     					$('#nama').val(nama);
-    					$('#jenis').val(jenis);
+    					$('#alamat').val(alamat);
+    					$('#no_telpon').val(no_telepon);
 
     				});
 
@@ -303,9 +305,10 @@
     					var nama = $('#nama').val();
     					var id_user = $('#id_user').val();
     					var status = $('#status').val();
-    					var jenis = $('#jenis').val();
+    					var no_telepon = $('#no_telpon').val();
+    					var alamat = $('#alamat').val();
 
-    					if (nama == '' || status == '') {
+    					if (nama == '' || status == '' || no_telepon == "" || status == "") {
     						Swal.fire({
     							icon: 'error',
     							title: 'Maaf!',
@@ -314,14 +317,15 @@
     					} else {
 
     						$.ajax({
-    							url: '<?= $bu ?>Kendaraan/edit ',
+    							url: '<?= $bu ?>Customer/edit ',
     							dataType: 'json',
     							method: 'POST',
     							data: {
     								id_admin: id_user,
     								nama: nama,
     								status: status,
-    								jenis: jenis,
+    								no_telepon: no_telepon,
+    								alamat: alamat,
     							}
     						}).done(function(e) {
     							console.log('berhasil');
