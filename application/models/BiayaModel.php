@@ -81,7 +81,7 @@ public function login(){
 	{
 		// var_dump($in);die;
 
-		if ($this->db->insert('supplier', $in)) {
+		if ($this->db->insert('biaya_opr', $in)) {
 			$status =  true;
 		} else {
 			var_dump($this->db->error());

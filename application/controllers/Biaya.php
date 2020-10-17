@@ -33,6 +33,12 @@ class Biaya extends CI_Controller {
 		$no = $start + 1;
 		$status = "";
 		foreach ($dt['data']->result() as $row) {
+			// echo $row->updated_at;
+			
+			$format = date('d/m/Y h:m:s', strtotime($row->updated_at));
+			// echo $format;die;
+
+
 			if ($row->status == 1) {
 				$status = "<span class='btn btn-rounded btn-outline-success px-3 btn-sm'>Aktif</span>";
 			} else {
@@ -43,7 +49,7 @@ class Biaya extends CI_Controller {
 			$fields = array($no++);
 			$fields[] = $row->nama_biaya . '<br>';
 			$fields[] = $status . '<br>';
-			$fields[] = $row->updated_at . '<br>';
+			$fields[] = $format  . '<br>';
 			$fields[] = '
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
 			data-id_biaya="' . $row->id_biaya . '" 
@@ -76,9 +82,9 @@ class Biaya extends CI_Controller {
 
 
 		$in = array(
-			'nama_supplier' => $username,
+			'nama_biaya' => $username,
 			'status' => $stat,
-			'modified' =>2,
+			'updated_at' => date('Y-m-d H:i:s'),
 		);
 
 		if (empty($username)) {
@@ -86,7 +92,7 @@ class Biaya extends CI_Controller {
 			$errorInputs[] = array('#username', 'Silahkan pilih username');
 		}
 		if ($status) {
-			$this->SuplierModel->tambah($in);
+			$this->BiayaModel->tambah($in);
 			$status = true;
 			$message = 'Berhasil Menambahkan .';
 		} else {
@@ -116,9 +122,9 @@ class Biaya extends CI_Controller {
 		$status = true;
 		// var_dump($transaksi_ldu_lihat);die();
 		$in = array(
-			'nama_supplier' => $nama,
+			'nama_biaya' => $nama,
 			'status' => $stat,
-			'modified' => 99,
+			'updated_at' => date('Y-m-d H:i:s'),
 		);
 
 		if (empty($nama)) {
@@ -128,7 +134,7 @@ class Biaya extends CI_Controller {
 		// var_dump($in);die();
 
 		if ($status) {
-			$this->ProdukModel->editDariTable('supplier', $in, $id_admin, 'id_supplier');
+			$this->ProdukModel->editDariTable('biaya_opr', $in, $id_admin, 'id_biaya');
 			$message = 'Berhasil Update Data ';
 		} else {
 			$message = 'Gagal Meng-Update Data! ';
