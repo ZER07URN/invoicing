@@ -72,6 +72,7 @@ class Kendaraan extends CI_Controller {
 	{
 		$username = $this->input->post('nama', TRUE);
 		$stat = $this->input->post('status', TRUE);
+		$jenis = $this->input->post('jenis', TRUE);
 
 		$message = 'Gagal menambahkan Produk Baru!<br>Silahkan lengkapi data yang diperlukan.';
 		$errorInputs = array();
@@ -79,8 +80,11 @@ class Kendaraan extends CI_Controller {
 
 
 		$in = array(
-			'nama_produk' => $username,
+			'nama_kendaraan' => $username,
 			'status' => $stat,
+			'jenis' => $jenis,
+			'updated' => date('Y-m-d H:i:s'),
+			'updatedby' => 1,
 		);
 
 		if (empty($username)) {
@@ -88,7 +92,7 @@ class Kendaraan extends CI_Controller {
 			$errorInputs[] = array('#username', 'Silahkan pilih username');
 		}
 		if ($status) {
-			$this->ProdukModel->tambah_admin($in);
+			$this->KendaraanModel->tambah_admin($in);
 			$status = true;
 			$message = 'Berhasil Menambahkan Produk.';
 		} else {

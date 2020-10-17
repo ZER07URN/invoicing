@@ -17,7 +17,7 @@ public function login(){
 		);
 		// untuk search
 		$columnsSearch = array(
-			'nama_kendaraam',		
+			'nama_kendaraan',		
 		);
 		$from = 'kendaraan k';
 		// custom SQL
@@ -81,7 +81,7 @@ public function login(){
 	{
 		// var_dump($in);die;
 
-		if ($this->db->insert('produk', $in)) {
+		if ($this->db->insert('kendaraan', $in)) {
 			$status =  true;
 		} else {
 			var_dump($this->db->error());

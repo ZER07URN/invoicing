@@ -77,10 +77,23 @@
     						<div class="col-md-10 mx-auto">
     							<div class="form-group row">
     								<div class="col-lg-6 col-md-6">
-    									<label>Nama Produk</label>
+    									<label>Nama Kendaraan</label>
     									<input type="text" class="form-control" name="nama" id="nama" placeholder="">
     									<input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="">
     								</div>
+    								<div class="col-lg-6 col-md-6">
+    									<div class="row">
+    										<div class="col-lg-12">
+    											<label>Jenis</label>
+    											<select class="form-control " name="jenis" id="jenis" data-live-search="true" tabindex="-1" aria-hidden="true">
+    												<option value=1>Mobil</option>
+    												<option value=0>Truk</option>
+    											</select>
+    										</div>
+    									</div>
+    								</div>
+    							</div>
+    							<div class="form-group row">
     								<div class="col-lg-6 col-md-6">
     									<div class="row">
     										<div class="col-lg-12">
@@ -204,6 +217,7 @@
     					$('small.text-danger').html('');
     					var status = $('#status').val();
     					var nama = $('#nama').val();
+    					var jenis = $('#jenis').val();
     					if (nama == '' || status == '') {
     						Swal.fire({
     							icon: 'error',
@@ -213,12 +227,13 @@
     					} else {
 
     						$.ajax({
-    							url: '<?= $bu ?>produk/tambah ',
+    							url: '<?= $bu ?>kendaraan/tambah ',
     							dataType: 'json',
     							method: 'POST',
     							data: {
     								nama: nama,
     								status: status,
+    								jenis: jenis,
 
     							}
     						}).done(function(e) {
