@@ -62,7 +62,7 @@ public function index()
 			$this->load->view('templates/index', $data);     
 		
 	}else{
-			echo " landing page";
+			redirect('Landing');
 	// die;
 	}
 	// die;   

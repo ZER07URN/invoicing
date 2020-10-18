@@ -30,7 +30,7 @@ class Biaya extends CI_Controller {
 
 			$this->load->view('templates/index', $data);
 		} else {
-			echo " landing page";
+			redirect('Landing');
 			// die;
 		}
 		// $this->load->view('templates/header');     
