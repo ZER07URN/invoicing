@@ -529,7 +529,7 @@
     							datatable.ajax.reload();
     							$(':checkbox').prop('checked', false);
     							Swal.fire({
-    								title: 'Error!',
+    								title: 'Mantul!',
     								text: e.message,
     								icon: 'success',
     								confirmButtonText: 'Cool'
