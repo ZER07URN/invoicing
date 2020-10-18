@@ -596,8 +596,8 @@
     				if (biaya_r == "1") $('#biaya_r').prop('checked', true);
     				if (biaya_c == "1") $('#biaya_c').prop('checked', true);
     				if (biaya_u == "1") $('#biaya_u').prop('checked', true);
-					if (biaya_d == "1") $('#biaya_d').prop('checked', true);
-					
+    				if (biaya_d == "1") $('#biaya_d').prop('checked', true);
+
     				if (histori_r == "1") $('#histori_r').prop('checked', true);
 
     			});
@@ -609,8 +609,39 @@
     				var status = $('#status').val();
     				var password = $('#password').val();
     				var email = $('#email').val();
-    				var feedback4 = $('#feedback4').prop('checked');
-    				var feedback1 = $('#feedback1').prop('checked');
+    				var admin_r = $('#admin_r').prop('checked');
+    				var admin_c = $('#admin_c').prop('checked');
+    				var admin_u = $('#admin_u').prop('checked');
+    				var admin_d = $('#admin_d').prop('checked');
+
+
+    				var suplier_r = $('#suplier_r').prop('checked');
+    				var suplier_c = $('#suplier_c').prop('checked');
+    				var suplier_u = $('#suplier_u').prop('checked');
+    				var suplier_d = $('#suplier_d').prop('checked');
+
+
+    				var produk_r = $('#produk_r').prop('checked');
+    				var produk_c = $('#produk_c').prop('checked');
+    				var produk_u = $('#produk_u').prop('checked');
+    				var produk_d = $('#produk_d').prop('checked');
+
+    				var kendaraan_r = $('#kendaraan_r').prop('checked');
+    				var kendaraan_c = $('#kendaraan_c').prop('checked');
+    				var kendaraan_u = $('#kendaraan_u').prop('checked');
+    				var kendaraan_d = $('#kendaraan_d').prop('checked');
+
+    				var custumer_r = $('#custumer_r').prop('checked');
+    				var custumer_c = $('#custumer_c').prop('checked');
+    				var custumer_u = $('#custumer_u').prop('checked');
+    				var custumer_d = $('#custumer_d').prop('checked');
+
+    				var biaya_r = $('#biaya_r').prop('checked');
+    				var biaya_c = $('#biaya_c').prop('checked');
+    				var biaya_u = $('#biaya_u').prop('checked');
+    				var biaya_d = $('#biaya_d').prop('checked');
+
+    				var histori_r = $('#histori_r').prop('checked');
 
     				if (nama == '' || password == '') {
     					Swal.fire({
@@ -630,8 +661,39 @@
     							password: password,
     							email: email,
     							status: status,
-    							feedback4: feedback4,
-    							feedback1: feedback1,
+    							admin_r: admin_r,
+    							admin_c: admin_c,
+    							admin_u: admin_u,
+    							admin_d: admin_d,
+
+    							suplier_r: suplier_r,
+    							suplier_c: suplier_c,
+    							suplier_u: suplier_u,
+    							suplier_d: suplier_d,
+
+    							produk_r: produk_r,
+    							produk_c: produk_c,
+    							produk_u: produk_u,
+    							produk_d: produk_d,
+
+    							kendaraan_r: kendaraan_r,
+    							kendaraan_c: kendaraan_c,
+    							kendaraan_u: kendaraan_u,
+    							kendaraan_d: kendaraan_d,
+
+    							custumer_r: custumer_r,
+    							custumer_c: custumer_c,
+    							custumer_u: custumer_u,
+    							custumer_d: custumer_d,
+
+    							biaya_r: biaya_r,
+    							biaya_c: biaya_c,
+    							biaya_u: biaya_u,
+    							biaya_d: biaya_d,
+
+    							histori_r: histori_r,
+
+
     						}
     					}).done(function(e) {
     						console.log('berhasil');
