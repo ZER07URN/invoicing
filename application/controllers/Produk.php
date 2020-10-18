@@ -9,13 +9,29 @@ class Produk extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('ProdukModel');
+		$this->load->model('AdminModel');
 	}
 	public function index()
 	{
-		// $this->load->view('templates/header');     
-		$data['content'] = 'master_produk';
+		$this->cekLogin();
+		$id_admin = $this->session->userdata('id_admin');
+		// var_dump($id_admin);die;
+		$r = $this->AdminModel->getRole($id_admin, 'produk_r')->r;
+		$c = $this->AdminModel->getRole($id_admin, 'produk_c')->r;
+		$u = $this->AdminModel->getRole($id_admin, 'produk_u')->r;
+		$d = $this->AdminModel->getRole($id_admin, 'produk_d')->r;
 
-		$this->load->view('templates/index', $data);
+
+		if ($r == '1' || $c == '1' || $u == '1' || $d == '1') {
+			$data['content'] = 'master_produk';
+
+			$this->load->view('templates/index', $data);
+		} else {
+			echo " landing page";
+			// die;
+		}
+
+		// $this->load->view('templates/header');     
 	}
 	public function getAllProduk()
 	{
@@ -152,6 +168,29 @@ class Produk extends CI_Controller {
 			'status' => $status,
 			'message' => $message,
 		));
+	}
+	function cekLogin()
+	{
+		if (!$this->isLoggedInAdmin()) {
+			$this->session->set_flashdata(
+				'notifikasi',
+				array(
+					'alert' => 'alert-danger',
+					'message' => 'Silahkan Login terlebih dahulu.',
+
+				)
+			);
+			redirect('login');
+		}
+	}
+	public function isLoggedInAdmin()
+	{
+		// Cek apakah terdapat session "admin_session"
+
+		if ($this->session->userdata('admin_session'))
+		return true; // sudah login
+		else
+			return false; // belum login
 	}
 
         

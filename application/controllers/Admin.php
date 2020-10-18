@@ -14,13 +14,58 @@ class Admin extends CI_Controller {
 	$this->load->model('ProdukModel');
 
   }
+	function cekLogin()
+	{
+		if (!$this->isLoggedInAdmin()) {
+			$this->session->set_flashdata(
+				'notifikasi',
+				array(
+					'alert' => 'alert-danger',
+					'message' => 'Silahkan Login terlebih dahulu.',
+
+				)
+			);
+			redirect('login');
+		}
+	}
+	public function isLoggedInAdmin()
+	{
+		// Cek apakah terdapat session "admin_session"
+
+		if ($this->session->userdata('admin_session'))
+		return true; // sudah login
+		else
+			return false; // belum login
+	}
+	public function logout()
+
+	{
+
+		$this->session->sess_destroy();
+
+		redirect('login');
+	}
 
 public function index()
 {
-		// $this->load->view('templates/header');     
-		$data['content'] = 'master_admin';
+	$this->cekLogin();
+	$id_admin = $this->session->userdata('id_admin');
+// var_dump($id_admin);die;
+	$admin_r = $this->AdminModel->getRole($id_admin, 'admin_r')->r;
+	$admin_c = $this->AdminModel->getRole($id_admin, 'admin_c')->r;
+	$admin_u = $this->AdminModel->getRole($id_admin, 'admin_u')->r;
+	$admin_d = $this->AdminModel->getRole($id_admin, 'admin_d')->r;
 
-		$this->load->view('templates/index',$data);     
+	if($admin_r =='1' || $admin_c == '1'|| $admin_u == '1'|| $admin_d == '1' ){
+			$data['content'] = 'master_admin';
+
+			$this->load->view('templates/index', $data);     
+		
+	}else{
+			echo " landing page";
+	// die;
+	}
+	// die;   
 }
 public function tambah_admin()
 {

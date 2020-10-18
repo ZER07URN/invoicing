@@ -144,6 +144,22 @@ class AdminModel extends CI_Model
 		}
 		return $status;
 	}
+	public function getRoleAll($id_admin)
+	{
+		$this->db->where('id_user', $id_admin);
+		// $this->db->where('password', $password);
+		return $this->db->get('admin_role');
+	}
+	public function getRole($id_admin, $spesifik)
+	{
+		$this->db->select($spesifik . ' as r');
+		$this->db->where('id_user', $id_admin);
+		// $this->db->where('password', $password);
+		return $this->db->get('user_role')->result()[0];
+		//  var_dump($this->db->last_query());die;
+		//  return
+
+	}
 
 
     

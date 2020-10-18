@@ -26,7 +26,7 @@
         				</li>
         			</ul>
         			<ul>
-        				<a href="<?= base_url(); ?>Histori" class="nav-link pink-gradient-active"><i class="material-icons icon"></i> <span>LogOut</span></a>
+        				<a href="<?= base_url(); ?>Admin/logout" class="nav-link pink-gradient-active"><i class="material-icons icon"></i> <span>LogOut</span></a>
         			</ul>
         		</li>
 
