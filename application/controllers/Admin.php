@@ -105,6 +105,22 @@ public function getAllProduk()
 			data-status="' . $row->status . '" 
 			data-created="' . $row->created . '" 
 			data-password="' . $this->bizDecrypt($row->password) . '" 		
+			data-admin_r="' . $row->admin_r . '" data-admin_c="' . $row->admin_c . '" data-admin_u="' . $row->admin_u . '" data-admin_d="' . $row->admin_d . '" 
+			
+			data-supplier_r="' . $row->supplier_r . '" data-supplier_c="' . $row->supplier_c . '" data-supplier_u="' . $row->supplier_u . '" data-supplier_d="' . $row->supplier_d . '" 
+
+
+			data-produk_r="' . $row->produk_r . '" 
+			data-produk_c="' . $row->produk_c . '" 
+				data-produk_u="' . $row->produk_u . '" 	data-produk_d="' . $row->produk_d . '" 	data-kendaraan_r="' . $row->kendaraan_r . '" 	data-kendaraan_c="' . $row->kendaraan_c . '" 	data-kendaraan_u="' . $row->kendaraan_u . '" 	data-kendaraan_d="' . $row->kendaraan_d . '" 
+
+				data-histori_r="' . $row->histori_r . '" 	data-histori_c="' . $row->histori_c . '" 		data-histori_u="' . $row->histori_u . '" 	data-histori_d="' . $row->histori_d . '" 
+
+				data-custumer_r="' . $row->custumer_r . '" 	data-custumer_c="' . $row->custumer_c . '" 		data-custumer_u="' . $row->custumer_u . '" 	data-custumer_d="' . $row->custumer_d . '" 
+
+				data-biaya_r="' . $row->biaya_r . '" 	data-biaya_c="' . $row->biaya_c . '" 		data-biaya_u="' . $row->biaya_u . '" 	data-biaya_d="' . $row->biaya_d . '" 
+
+
 			></i> Ubah</button>
 
         <button class="btn btn-round btn-danger hapus" data-id_user="' . $row->id_user . '" data-nama_admin="' . $row->nama_admin . '"
@@ -123,7 +139,7 @@ public function getAllProduk()
 
 public function edit_admin()
 {
-	// var_dump($_POST);die;
+	var_dump($_POST);die;
 		$id_admin = $this->input->post('id_admin', TRUE);	
 		$password = $this->input->post('password', TRUE);
 		$email = $this->input->post('email', TRUE);
@@ -136,7 +152,8 @@ public function edit_admin()
 		// var_dump($transaksi_ldu_lihat);die();
 		$in = array(
 			'nama_admin' => $nama,
-			'password' =>  $password,
+			'password' =>
+			$this->bizEncrypt($password),
 			'email' => $email,
 			'status' => $stat,
 		);

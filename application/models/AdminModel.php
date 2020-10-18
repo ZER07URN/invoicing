@@ -30,7 +30,7 @@ class AdminModel extends CI_Model
 		$from = 'user u';
 		// custom SQL
 
-		$sql = "SELECT* FROM {$from} 
+		$sql = "SELECT* FROM {$from} join user_role ur on ur.id_user=u.id_user
 		";
 		$where = "";
 		// if (isset($post['id_kelas']) && $post['id_kelas'] != 'default') {

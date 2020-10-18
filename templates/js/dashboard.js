@@ -449,7 +449,7 @@ setInterval(function () {
 
     });
 
-    window.myPie.update();
-    window.myLine.update();
-    window.myLine2.update();
+    // window.myPie.update();
+    // window.myLine.update();
+    // window.myLine2.update();
 }, 1500);

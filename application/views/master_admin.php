@@ -119,68 +119,176 @@
     											</thead>
     											<tbody>
     												<tr>
-    													<th>Presence</th>
+    													<th>Admin</th>
     													<td>
     														<div class="custom-control custom-checkbox">
-    															<input type="checkbox" class="custom-control-input" id="feedback1">
-    															<label class="custom-control-label" for="feedback1">Ok</label>
+    															<input type="checkbox" class="custom-control-input" id="admin_r">
+    															<label class="custom-control-label" for="admin_r">Ok</label>
     														</div>
     													</td>
     													<td>
     														<div class="custom-control custom-checkbox">
-    															<input type="checkbox" class="custom-control-input" id="feedback2">
-    															<label class="custom-control-label" for="feedback2">Ok</label>
+    															<input type="checkbox" class="custom-control-input" id="admin_c">
+    															<label class="custom-control-label" for="admin_c">Ok</label>
     														</div>
     													</td>
     													<td>
     														<div class="custom-control custom-checkbox">
-    															<input type="checkbox" class="custom-control-input" id="feedback3">
-    															<label class="custom-control-label" for="feedback3">Ok</label>
+    															<input type="checkbox" class="custom-control-input" id="admin_u">
+    															<label class="custom-control-label" for="admin_u">Ok</label>
     														</div>
     													</td>
     													<td>
     														<div class="custom-control custom-checkbox">
-    															<input type="checkbox" class="custom-control-input" id="feedback3">
-    															<label class="custom-control-label" for="feedback3">Ok</label>
-    														</div>
-    													</td>
-    												</tr>
-    												<tr>
-    													<th>Presence</th>
-    													<td>
-    														<div class="custom-control custom-checkbox">
-    															<input type="checkbox" class="custom-control-input" id="feedback1">
-    															<label class="custom-control-label" for="feedback1">Ok</label>
-    														</div>
-    													</td>
-    													<td>
-    														<div class="custom-control custom-checkbox">
-    															<input type="checkbox" class="custom-control-input" id="feedback2">
-    															<label class="custom-control-label" for="feedback2">Ok</label>
-    														</div>
-    													</td>
-    													<td>
-    														<div class="custom-control custom-checkbox">
-    															<input type="checkbox" class="custom-control-input" id="feedback3">
-    															<label class="custom-control-label" for="feedback3">Ok</label>
-    														</div>
-    													</td>
-    													<td>
-    														<div class="custom-control custom-checkbox">
-    															<input type="checkbox" class="custom-control-input" id="feedback3">
-    															<label class="custom-control-label" for="feedback3">Ok</label>
+    															<input type="checkbox" class="custom-control-input" id="admin_d">
+    															<label class="custom-control-label" for="admin_d">Ok</label>
     														</div>
     													</td>
     												</tr>
     												<tr>
-    													<th>Presence</th>
+    													<th>Suplier</th>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="suplier_r">
+    															<label class="custom-control-label" for="suplier_r">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="suplier_c">
+    															<label class="custom-control-label" for="suplier_c">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="suplier_u">
+    															<label class="custom-control-label" for="suplier_u">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="suplier_d">
+    															<label class="custom-control-label" for="suplier_d">Ok</label>
+    														</div>
+    													</td>
+    												</tr>
+    												<tr>
+    													<th>Produk</th>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="produk_r">
+    															<label class="custom-control-label" for="produk_r">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="produk_c">
+    															<label class="custom-control-label" for="produk_c">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="produk_u">
+    															<label class="custom-control-label" for="produk_u">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="produk_d">
+    															<label class="custom-control-label" for="produk_d">Ok</label>
+    														</div>
+    													</td>
+    												</tr>
+    												<tr>
+    													<th>Kendaraan</th>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="kendaraan_r">
+    															<label class="custom-control-label" for="kendaraan_r">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="kendaraan_c">
+    															<label class="custom-control-label" for="kendaraan_c">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="kendaraan_u">
+    															<label class="custom-control-label" for="kendaraan_u">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="kendaraan_d">
+    															<label class="custom-control-label" for="kendaraan_d">Ok</label>
+    														</div>
+    													</td>
+    												</tr>
+    												<tr>
+    													<th>Customer</th>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="custumer_c">
+    															<label class="custom-control-label" for="custumer_c">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="custumer_r">
+    															<label class="custom-control-label" for="custumer_r">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="custumer_u">
+    															<label class="custom-control-label" for="custumer_u">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="custumer_d">
+    															<label class="custom-control-label" for="custumer_d">Ok</label>
+    														</div>
+    													</td>
+    												</tr>
+    												<tr>
+    													<th>Biaya</th>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="biaya_r">
+    															<label class="custom-control-label" for="biaya_r">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="biaya_c">
+    															<label class="custom-control-label" for="biaya_c">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="biaya_u">
+    															<label class="custom-control-label" for="biaya_u">Ok</label>
+    														</div>
+    													</td>
+    													<td>
+    														<div class="custom-control custom-checkbox">
+    															<input type="checkbox" class="custom-control-input" id="biaya_d">
+    															<label class="custom-control-label" for="biaya_d">Ok</label>
+    														</div>
+    													</td>
+    												</tr>
+    												<tr>
+    													<th>Histori</th>
     													<td>
     														<div class="custom-control custom-checkbox">
     															<input type="checkbox" class="custom-control-input" id="feedback1">
     															<label class="custom-control-label" for="feedback1">Ok</label>
     														</div>
     													</td>
-    													<td>
+    													<!-- <td>
     														<div class="custom-control custom-checkbox">
     															<input type="checkbox" class="custom-control-input" id="feedback2">
     															<label class="custom-control-label" for="feedback2">Ok</label>
@@ -197,7 +305,7 @@
     															<input type="checkbox" class="custom-control-input" id="feedback3">
     															<label class="custom-control-label" for="feedback3">Ok</label>
     														</div>
-    													</td>
+    													</td> -->
     												</tr>
     											</tbody>
     										</table>
@@ -421,12 +529,17 @@
     				var password = $(this).data('password');
     				var email = $(this).data('email');
     				var status = $(this).data('status');
+    				var feedback4 = $(this).data('feedback4');
+    				var feedback1 = $(this).data('feedback1');
+
 
     				$('#id_user').val(id_user);
     				$('#status').val(status);
     				$('#password').val(password);
     				$('#email').val(email);
     				$('#nama').val(nama);
+    				$('#feedback4').val(feedback4);
+    				$('#feedback1').val(feedback1);
 
     			});
 
@@ -437,6 +550,8 @@
     				var status = $('#status').val();
     				var password = $('#password').val();
     				var email = $('#email').val();
+    				var feedback4 = $('#feedback4').prop('checked');
+    				var feedback1 = $('#feedback1').prop('checked');
 
     				if (nama == '' || password == '') {
     					Swal.fire({
@@ -456,6 +571,8 @@
     							password: password,
     							email: email,
     							status: status,
+    							feedback4: feedback4,
+    							feedback1: feedback1,
     						}
     					}).done(function(e) {
     						console.log('berhasil');
