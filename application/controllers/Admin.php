@@ -107,7 +107,7 @@ public function getAllProduk()
 			data-password="' . $this->bizDecrypt($row->password) . '" 		
 			data-admin_r="' . $row->admin_r . '" data-admin_c="' . $row->admin_c . '" data-admin_u="' . $row->admin_u . '" data-admin_d="' . $row->admin_d . '" 
 			
-			data-supplier_r="' . $row->supplier_r . '" data-supplier_c="' . $row->supplier_c . '" data-supplier_u="' . $row->supplier_u . '" data-supplier_d="' . $row->supplier_d . '" 
+			data-suplier_r="' . $row->supplier_r . '" data-suplier_c="' . $row->supplier_c . '" data-suplier_u="' . $row->supplier_u . '" data-suplier_d="' . $row->supplier_d . '" 
 
 
 			data-produk_r="' . $row->produk_r . '" 

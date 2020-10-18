@@ -284,8 +284,8 @@
     													<th>Histori</th>
     													<td>
     														<div class="custom-control custom-checkbox">
-    															<input type="checkbox" class="custom-control-input" id="feedback1">
-    															<label class="custom-control-label" for="feedback1">Ok</label>
+    															<input type="checkbox" class="custom-control-input" id="histori_r">
+    															<label class="custom-control-label" for="histori_r">Ok</label>
     														</div>
     													</td>
     													<!-- <td>
@@ -529,17 +529,76 @@
     				var password = $(this).data('password');
     				var email = $(this).data('email');
     				var status = $(this).data('status');
-    				var feedback4 = $(this).data('feedback4');
-    				var feedback1 = $(this).data('feedback1');
+    				var admin_r = $(this).data('admin_r');
+    				var admin_c = $(this).data('admin_c');
+    				var admin_d = $(this).data('admin_d');
+    				var admin_u = $(this).data('admin_u');
 
+    				var suplier_r = $(this).data('suplier_r');
+    				var suplier_c = $(this).data('suplier_c');
+    				var suplier_u = $(this).data('suplier_u');
+    				var suplier_d = $(this).data('suplier_d');
+
+    				var produk_r = $(this).data('produk_r');
+    				var produk_c = $(this).data('produk_c');
+    				var produk_u = $(this).data('produk_u');
+    				var produk_d = $(this).data('produk_d');
+
+    				var kendaraan_r = $(this).data('kendaraan_r');
+    				var kendaraan_c = $(this).data('kendaraan_c');
+    				var kendaraan_u = $(this).data('kendaraan_u');
+    				var kendaraan_d = $(this).data('kendaraan_d');
+
+
+    				var custumer_r = $(this).data('custumer_r');
+    				var custumer_c = $(this).data('custumer_c');
+    				var custumer_u = $(this).data('custumer_u');
+    				var custumer_d = $(this).data('custumer_d');
+
+    				var biaya_r = $(this).data('biaya_r');
+    				var biaya_c = $(this).data('biaya_c');
+    				var biaya_u = $(this).data('biaya_u');
+    				var biaya_d = $(this).data('biaya_d');
+
+    				var histori_r = $(this).data('histori_r');
 
     				$('#id_user').val(id_user);
     				$('#status').val(status);
     				$('#password').val(password);
     				$('#email').val(email);
     				$('#nama').val(nama);
-    				$('#feedback4').val(feedback4);
-    				$('#feedback1').val(feedback1);
+    				// $('#admin_r').val(admin_r);
+    				if (admin_r == "1") $('#admin_r').prop('checked', true);
+    				if (admin_c == "1") $('#admin_c').prop('checked', true);
+    				if (admin_u == "1") $('#admin_u').prop('checked', true);
+    				if (admin_d == "1") $('#admin_d').prop('checked', true);
+
+    				if (suplier_r == "1") $('#suplier_r').prop('checked', true);
+    				if (suplier_c == "1") $('#suplier_c').prop('checked', true);
+    				if (suplier_u == "1") $('#suplier_u').prop('checked', true);
+    				if (suplier_d == "1") $('#suplier_d').prop('checked', true);
+
+    				if (produk_r == "1") $('#produk_r').prop('checked', true);
+    				if (produk_c == "1") $('#produk_c').prop('checked', true);
+    				if (produk_u == "1") $('#produk_u').prop('checked', true);
+    				if (produk_d == "1") $('#produk_d').prop('checked', true);
+
+    				if (kendaraan_r == "1") $('#kendaraan_r').prop('checked', true);
+    				if (kendaraan_c == "1") $('#kendaraan_c').prop('checked', true);
+    				if (kendaraan_u == "1") $('#kendaraan_u').prop('checked', true);
+    				if (kendaraan_d == "1") $('#kendaraan_d').prop('checked', true);
+
+    				if (custumer_r == "1") $('#custumer_r').prop('checked', true);
+    				if (custumer_c == "1") $('#custumer_c').prop('checked', true);
+    				if (custumer_u == "1") $('#custumer_u').prop('checked', true);
+    				if (custumer_d == "1") $('#custumer_d').prop('checked', true);
+
+    				if (biaya_r == "1") $('#biaya_r').prop('checked', true);
+    				if (biaya_c == "1") $('#biaya_c').prop('checked', true);
+    				if (biaya_u == "1") $('#biaya_u').prop('checked', true);
+					if (biaya_d == "1") $('#biaya_d').prop('checked', true);
+					
+    				if (histori_r == "1") $('#histori_r').prop('checked', true);
 
     			});
 
