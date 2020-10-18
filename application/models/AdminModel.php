@@ -127,6 +127,23 @@ class AdminModel extends CI_Model
 		// $this->db->where('password', $password);
 		return $this->db->get('user');
 	}
+	public function get_last_id()
+	{
+		$this->db->select_max('id_user', 'last_id');
+		return $this->db->get('user')->row();
+	}
+	public function tambah_admin_role($in)
+	{
+
+		if ($this->db->insert('user_role', $in)) {
+			$status =  true;
+		} else {
+			var_dump($this->db->error());
+			die();
+			$status = false;
+		}
+		return $status;
+	}
 
 
     

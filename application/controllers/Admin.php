@@ -28,6 +28,40 @@ public function tambah_admin()
     $password = $this->input->post('password', TRUE);
     $email = $this->input->post('email', TRUE);
 	$stat = $this->input->post('status', TRUE);
+		$admin_r = ($this->input->post('admin_r', TRUE) == "true") ? 1 : 0;
+		$admin_c = ($this->input->post('admin_c', TRUE) == "true") ? 1 : 0;
+		$admin_u = ($this->input->post('admin_u', TRUE) == "true") ? 1 : 0;
+		$admin_d = ($this->input->post('admin_d', TRUE) == "true") ? 1 : 0;
+
+		$suplier_r = ($this->input->post('suplier_r', TRUE) == "true") ? 1 : 0;
+		$suplier_c = ($this->input->post('suplier_c', TRUE) == "true") ? 1 : 0;
+		$suplier_u = ($this->input->post('suplier_u', TRUE) == "true") ? 1 : 0;
+		$suplier_d = ($this->input->post('suplier_d', TRUE) == "true") ? 1 : 0;
+
+		$produk_r = ($this->input->post('produk_r', TRUE) == "true") ? 1 : 0;
+		$produk_c = ($this->input->post('produk_c', TRUE) == "true") ? 1 : 0;
+		$produk_u = ($this->input->post('produk_u', TRUE) == "true") ? 1 : 0;
+		$produk_d = ($this->input->post('produk_d', TRUE) == "true") ? 1 : 0;
+
+		$kendaraan_r = ($this->input->post('kendaraan_r', TRUE) == "true") ? 1 : 0;
+		$kendaraan_c = ($this->input->post('kendaraan_c', TRUE) == "true") ? 1 : 0;
+		$kendaraan_u = ($this->input->post('kendaraan_u', TRUE) == "true") ? 1 : 0;
+		$kendaraan_d = ($this->input->post('kendaraan_d', TRUE) == "true") ? 1 : 0;
+
+		$custumer_r = ($this->input->post('custumer_r', TRUE) == "true") ? 1 : 0;
+		$custumer_c = ($this->input->post('custumer_c', TRUE) == "true") ? 1 : 0;
+		$custumer_u = ($this->input->post('custumer_u', TRUE) == "true") ? 1 : 0;
+		$custumer_d = ($this->input->post('custumer_d', TRUE) == "true") ? 1 : 0;
+
+		$biaya_r = ($this->input->post('biaya_r', TRUE) == "true") ? 1 : 0;
+		$biaya_c = ($this->input->post('biaya_c', TRUE) == "true") ? 1 : 0;
+		$biaya_u = ($this->input->post('biaya_u', TRUE) == "true") ? 1 : 0;
+		$biaya_d = ($this->input->post('biaya_d', TRUE) == "true") ? 1 : 0;
+
+		$histori_r = ($this->input->post('histori_r', TRUE) == "true") ? 1 : 0;
+		
+
+
 	
     $message = 'Gagal menambahkan Admin Baru!<br>Silahkan lengkapi data yang diperlukan.';
     $errorInputs = array();
@@ -41,6 +75,7 @@ public function tambah_admin()
 	  'email' => $email,
 	   'created' => date('Y-m-d H:i:s'),
 	);
+
 	
     if (empty($username)) {
       $status = false;
@@ -52,6 +87,41 @@ public function tambah_admin()
 	}
 	if ($status) {
 		$this->AdminModel->tambah_admin($in);
+			$id_admin = $this->AdminModel->get_last_id()->last_id;
+			$in_role = array(
+				'id_user' => $id_admin,
+				'admin_r' => $admin_r,
+				'admin_c' => $admin_c,
+				'admin_u' => $admin_u,
+				'admin_d' => $admin_d,
+
+				'supplier_r' => $suplier_r,
+				'supplier_c' => $suplier_c,
+				'supplier_u' => $suplier_u,
+				'supplier_d' => $suplier_d,
+
+				'produk_r' => $produk_r,
+				'produk_c' => $produk_c,
+				'produk_u' => $produk_u,
+				'produk_d' => $produk_d,
+
+				'kendaraan_r' => $kendaraan_r,
+				'kendaraan_c' => $kendaraan_c,
+				'kendaraan_u' => $kendaraan_u,
+				'kendaraan_d' => $kendaraan_d,
+
+				'custumer_r' => $custumer_r,
+				'custumer_c' => $custumer_c,
+				'custumer_u' => $custumer_u,
+				'custumer_d' => $custumer_d,
+
+				'biaya_r' => $biaya_r,
+				'biaya_c' => $biaya_c,
+				'biaya_u' => $biaya_u,
+				'biaya_d' => $biaya_d,
+				'histori_r' => $histori_r,
+			);
+		$this->AdminModel->tambah_admin_role($in_role);
 		 $status = true;
     	$message = 'Berhasil Menambahkan Admin.';
 		 
@@ -240,7 +310,7 @@ public function edit_admin()
 
 		if ($status) {
 			$this->AdminModel->editDariTable('user',$in, $id_admin);		
-					$message = 'Berhasil Update Admin ';
+			$message = 'Berhasil Update Admin ';
 			$this->ProdukModel->editDariTable('user_role', $in_role, $id_admin,'id_user');	
 				} 
 		 else {

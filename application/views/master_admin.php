@@ -11,7 +11,7 @@
     					<h2 class="content-color-primary page-title">Master Admin</h2>
     				</div>
     				<div class="col-auto">
-    					<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
+    					<button class="btn btn-rounded pink-gradient text-uppercase pr-3" id="tombole"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
     				</div>
     			</div>
     		</div>
@@ -410,7 +410,11 @@
 
     			});
 
+    			$('#tombole').on('click', function() {
 
+    				$(':checkbox').prop('checked', false);
+
+    			})
 
     			$('#btnUbah').hide();
 
@@ -423,43 +427,40 @@
     				var password = $('#password').val();
     				var email = $('#email').val();
 
-
-    				// var all_admin = $('#role-all_admin').prop('checked');
-    				// var tambah_admin = $('#role-tambah_admin').prop('checked');
-    				// var all_user = $('#role-all_user').prop('checked');
-    				// var all_produk = $('#role-all_produk').prop('checked');
-    				// var tambah_produk = $('#role-tambah_produk').prop('checked');
-
-    				// var transaksi = $('#role-transaksi').prop('checked');
-    				// var bundling = $('#role-bundling').prop('checked');
-    				// var grade = $('#role-grade').prop('checked');
-    				// var spek_hp = $('#role-spek_hp').prop('checked');
-    				// var spek_smartwatch = $('#role-spek_smartwatch').prop('checked');
-    				// var spek_laptop = $('#role-spek_laptop').prop('checked');
-    				// var waktu = $('#role-waktu').prop('checked');
-
-    				// var transaksi_ldu = $('#role-transaksi_ldu').prop('checked');
-    				// var transaksi_bundling = $('#role-transaksi_bundling').prop('checked');
-    				// var bidding_ldu = $('#role-bidding_ldu').prop('checked');
-    				// var master_user_lihat = $('#role-master_user_lihat').prop('checked');
-    				// var master_harga = $('#role-harga').prop('checked');
-    				// var transaksi_ldu_lihat = $('#role-transaksi_ldu_lihat').prop('checked');
-    				// var histori_admin = $('#role-histori_admin').prop('checked');
-    				// var histori_user = $('#role-histori_user').prop('checked');
-    				// var daftarBidderLihat = $('#role-daftarBidderLihat').prop('checked');
-    				// var membership = $('#role-membership').prop('checked');
-    				// var voucher = $('#role-voucher').prop('checked');
-    				// var statistik = $('#role-statistik').prop('checked');
+    				var admin_r = $('#admin_r').prop('checked');
+    				var admin_c = $('#admin_c').prop('checked');
+    				var admin_u = $('#admin_u').prop('checked');
+    				var admin_d = $('#admin_d').prop('checked');
 
 
-    				// // console.log(statistik);
-    				// // return (false);
-    				// var noRoleSelected = true;
-    				// if (all_admin || tambah_admin || all_user ||
-    				// 	all_produk || tambah_produk ||
-    				// 	transaksi || bundling || grade ||
-    				// 	spek_hp || spek_smartwatch || spek_laptop || waktu || transaksi_ldu_lihat || transaksi_ldu || master_user_lihat || master_harga || transaksi_bundling || bidding_ldu || histori_user || histori_admin || daftarBidderLihat || membership || voucher || statistik
-    				// ) noRoleSelected = false;
+    				var suplier_r = $('#suplier_r').prop('checked');
+    				var suplier_c = $('#suplier_c').prop('checked');
+    				var suplier_u = $('#suplier_u').prop('checked');
+    				var suplier_d = $('#suplier_d').prop('checked');
+
+
+    				var produk_r = $('#produk_r').prop('checked');
+    				var produk_c = $('#produk_c').prop('checked');
+    				var produk_u = $('#produk_u').prop('checked');
+    				var produk_d = $('#produk_d').prop('checked');
+
+    				var kendaraan_r = $('#kendaraan_r').prop('checked');
+    				var kendaraan_c = $('#kendaraan_c').prop('checked');
+    				var kendaraan_u = $('#kendaraan_u').prop('checked');
+    				var kendaraan_d = $('#kendaraan_d').prop('checked');
+
+    				var custumer_r = $('#custumer_r').prop('checked');
+    				var custumer_c = $('#custumer_c').prop('checked');
+    				var custumer_u = $('#custumer_u').prop('checked');
+    				var custumer_d = $('#custumer_d').prop('checked');
+
+    				var biaya_r = $('#biaya_r').prop('checked');
+    				var biaya_c = $('#biaya_c').prop('checked');
+    				var biaya_u = $('#biaya_u').prop('checked');
+    				var biaya_d = $('#biaya_d').prop('checked');
+
+    				var histori_r = $('#histori_r').prop('checked');
+
     				var kosong = "0";
     				if (nama == '' || password == '') {
     					Swal.fire({
@@ -478,6 +479,37 @@
     							password: password,
     							email: email,
     							status: status,
+    							admin_r: admin_r,
+    							admin_c: admin_c,
+    							admin_u: admin_u,
+    							admin_d: admin_d,
+
+    							suplier_r: suplier_r,
+    							suplier_c: suplier_c,
+    							suplier_u: suplier_u,
+    							suplier_d: suplier_d,
+
+    							produk_r: produk_r,
+    							produk_c: produk_c,
+    							produk_u: produk_u,
+    							produk_d: produk_d,
+
+    							kendaraan_r: kendaraan_r,
+    							kendaraan_c: kendaraan_c,
+    							kendaraan_u: kendaraan_u,
+    							kendaraan_d: kendaraan_d,
+
+    							custumer_r: custumer_r,
+    							custumer_c: custumer_c,
+    							custumer_u: custumer_u,
+    							custumer_d: custumer_d,
+
+    							biaya_r: biaya_r,
+    							biaya_c: biaya_c,
+    							biaya_u: biaya_u,
+    							biaya_d: biaya_d,
+
+    							histori_r: histori_r,
 
     						}
     					}).done(function(e) {
@@ -495,6 +527,7 @@
     						if (e.status) {
     							$('#modal').modal('hide');
     							datatable.ajax.reload();
+    							$(':checkbox').prop('checked', false);
     							Swal.fire({
     								title: 'Error!',
     								text: e.message,
@@ -523,6 +556,7 @@
     				$('#btnTambahAdmin').hide();
     				$('#btnUbah').show();
 
+    				$(':checkbox').prop('checked', false);
 
     				var id_user = $(this).data('id_user');
     				var nama = $(this).data('nama_admin');
@@ -702,6 +736,7 @@
     						$('#username').val('');
     						$('#Password').val('');
     						$('#email').val('');
+    						$(':checkbox').prop('checked', false);
     						// $(':checkbox').prop('checked', false);
     						// $('#modalAdmin').modal('hide'); //$('body').removeClass('modal-open');$('.modal-backdrop').remove();
     						var alert = '';
@@ -817,7 +852,17 @@
     				}
     				return false;
     			});
+    			resetForm($('#modal'));
 
+    			function resetForm($form) {
+    				console.log("sss")
+    				$form.find('input:text, input:password, input:file, select, textarea').val('');
+
+    				$form.find('input:radio, input:checkbox')
+
+    					.removeAttr('checked').removeAttr('selected');
+
+    			}
 
 
 
