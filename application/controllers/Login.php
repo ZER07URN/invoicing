@@ -10,6 +10,7 @@ class Login extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('AdminModel');
+		$this->load->model('HistoriModel');
 	}
 	public function buat_captcha()
 	{
@@ -104,6 +105,11 @@ public function index()
 					// Hapus Session kode captcha
 					$status = true;
 					$message = 'Selamat datang ' . $r->nama_admin . ', sedang mengalihkan..';
+
+					//Log histori
+					$desk = 'Login  ' ;
+					$namaLog = 'Login';
+					$this->HistoriModel->log($r->id_user, $namaLog, $desk);
 
 				} else {
 					$message = 'Username & password tidak cocok!';

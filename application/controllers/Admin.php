@@ -50,7 +50,7 @@ public function index()
 {
 	$this->cekLogin();
 	$id_admin = $this->session->userdata('id_admin');
-// var_dump($id_admin);die;
+	// var_dump($id_admin);die;
 	$admin_r = $this->AdminModel->getRole($id_admin, 'admin_r')->r;
 	$admin_c = $this->AdminModel->getRole($id_admin, 'admin_c')->r;
 	$admin_u = $this->AdminModel->getRole($id_admin, 'admin_u')->r;
