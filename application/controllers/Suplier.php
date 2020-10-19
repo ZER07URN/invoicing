@@ -36,9 +36,13 @@ class Suplier extends CI_Controller {
 	}
 	public function getAll()
 	{
-
-
 		$id_admin = $this->session->userdata('id_admin');
+		$sr = $this->AdminModel->getRole($id_admin, 'supplier_r')->r;
+		$sc = $this->AdminModel->getRole($id_admin, 'supplier_c')->r;
+		$su = $this->AdminModel->getRole($id_admin, 'supplier_u')->r;
+		$sd = $this->AdminModel->getRole($id_admin, 'supplier_d')->r;
+
+
 		
 		$dt = $this->SuplierModel->data_All($_POST);
 		$bu = base_url();
@@ -63,18 +67,41 @@ class Suplier extends CI_Controller {
 			$fields[] = $row->nama_supplier . '<br>';
 			$fields[] = $sta . '<br>';
 			$fields[] = $row->nama_admin . '<br>';
+
+		if ($su == 1 and $sd == 1) {
+
 			$fields[] = '
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
 			data-id_supplier="' . $row->id_supplier . '" 
 			data-nama_supplier="' . $row->nama_supplier . '" 
 			data-status="' . $row->status . '"  	
 			></i> Ubah</button>
+			<button class="btn btn-round btn-danger hapus" 			data-id_supplier="' . $row->id_supplier . '" 
+				data-nama_supplier="' . $row->nama_supplier . '" 
+			>Hapus</button>  ';		
 
-        <button class="btn btn-round btn-danger hapus" 			data-id_supplier="' . $row->id_supplier . '" 
+			} else if ($su == 0 and $sd == 1) {
+
+			$fields[] = '
+			<button class="btn btn-round btn-danger hapus" 			data-id_supplier="' . $row->id_supplier . '" 
 			data-nama_supplier="' . $row->nama_supplier . '" 
-        >Hapus</button>              
+			>Hapus</button>  ';
+			} else  if ($su == 1 and $sd == 0) {
 
-        ';
+				$fields[] = '
+			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
+			data-id_supplier="' . $row->id_supplier . '" 
+			data-nama_supplier="' . $row->nama_supplier . '" 
+			data-status="' . $row->status . '"  	
+			></i> Ubah</button> ';
+			} else {
+				$fields[] = '
+				<button class="btn btn-round btn-danger" 
+				>Tidak Punya Akses!</button>              
+
+				';
+			}
+
 			$datatable['data'][] = $fields;
 		}
 
