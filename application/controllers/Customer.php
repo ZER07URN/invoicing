@@ -11,6 +11,7 @@ class Customer extends CI_Controller {
 		$this->load->model('ProdukModel');
 		$this->load->model('CustomerModel');
 		$this->load->model('AdminModel');
+		$this->load->model('HistoriModel');
 	}
 	function cekLogin()
 	{

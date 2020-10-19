@@ -12,7 +12,7 @@ class Admin extends CI_Controller {
 
     $this->load->model('AdminModel');
 	$this->load->model('ProdukModel');
-		$this->load->model('HistoriModel');
+	$this->load->model('HistoriModel');
 
   }
 	function cekLogin()
@@ -409,7 +409,7 @@ public function hapusAdmin()
 
 			$created = date('Y-m-d H:i:s');
 			$desk = 'Hapus Admin : ' . $data[0]->nama_admin ;
-			$namaLog = 'Edit Admin';
+			$namaLog = 'Hapus Admin';
 			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
 
 		}

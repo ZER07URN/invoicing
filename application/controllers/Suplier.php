@@ -12,6 +12,7 @@ class Suplier extends CI_Controller {
 		$this->load->model('CustomerModel');
 		$this->load->model('SuplierModel');
 		$this->load->model('AdminModel');
+		$this->load->model('HistoriModel');
 	}
 	public function index()
 	{
@@ -56,7 +57,7 @@ class Suplier extends CI_Controller {
 			$fields = array($no++);
 			$fields[] = $row->nama_supplier . '<br>';
 			$fields[] = $status . '<br>';
-			$fields[] = $row->modified . '<br>';
+			$fields[] = $row->nama_admin . '<br>';
 			$fields[] = '
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
 			data-id_supplier="' . $row->id_supplier . '" 
@@ -80,6 +81,8 @@ class Suplier extends CI_Controller {
 	}
 	public function tambah()
 	{
+		$id_userReal = $_SESSION['id_admin'];
+
 		$username = $this->input->post('nama', TRUE);
 		$stat = $this->input->post('status', TRUE);
 
@@ -91,7 +94,7 @@ class Suplier extends CI_Controller {
 		$in = array(
 			'nama_supplier' => $username,
 			'status' => $stat,
-			'modified' =>2,
+			'modified' =>$id_userReal,
 		);
 
 		if (empty($username)) {
@@ -103,7 +106,6 @@ class Suplier extends CI_Controller {
 			$status = true;
 			$message = 'Berhasil Menambahkan .';
 
-			$id_userReal = $_SESSION['id_admin'];
 			$created = date('Y-m-d H:i:s');
 			$desk = 'Tambah Suplier  Produk  : ' . $username;
 			$namaLog = 'Tambah Suplier  Produk';
@@ -126,6 +128,8 @@ class Suplier extends CI_Controller {
 	public function edit()
 	{
 		// var_dump($_POST);die;
+
+		$id_userReal = $_SESSION['id_admin'];
 		$id_admin = $this->input->post('id_admin', TRUE);
 		$nama = $this->input->post('nama', TRUE);
 		$stat = $this->input->post('status', TRUE);
@@ -137,7 +141,7 @@ class Suplier extends CI_Controller {
 		$in = array(
 			'nama_supplier' => $nama,
 			'status' => $stat,
-			'modified' => 99,
+			'modified' => $id_userReal,
 		);
 
 		if (empty($nama)) {

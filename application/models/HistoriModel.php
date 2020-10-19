@@ -68,6 +68,7 @@ public function login(){
 		$start  = isset($post['start']) ? $post['start'] : 0;
 		$length = isset($post['length']) ? $post['length'] : 10;
 		$sql .= " LIMIT {$start}, {$length}";
+		// var_dump($sql);
 		$data  = $this->db->query($sql);
 		return array(
 
