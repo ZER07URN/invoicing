@@ -10,6 +10,12 @@
 
 	?>
 
+    <div class="alert alert-success" role="alert" id="sukses">
+    	Berhasil....
+    	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    		<span aria-hidden="true">×</span>
+    	</button>
+    </div>
 
     <div class="container-fluid bg-light-opac">
     	<div class="row">
@@ -17,13 +23,13 @@
     			<div class="row align-items-center">
     				<div class="col">
     					<h2 class="content-color-primary page-title">Master Customer</h2>
-					</div>
-					
+    				</div>
+
     				<?php if ($cc == '1') { ?>
-    				<div class="col-auto">
-    					<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
-					</div>
-					<?php } ?>
+    					<div class="col-auto">
+    						<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
+    					</div>
+    				<?php } ?>
     			</div>
     		</div>
     	</div>
@@ -143,6 +149,7 @@
 
 
 
+    				$('#sukses').hide()
     				var datatable = $('#masteradmin').DataTable({
     					dom: "Bfrltip",
     					'pageLength': 10,
@@ -268,12 +275,15 @@
     							if (e.status) {
     								$('#modal').modal('hide');
     								datatable.ajax.reload();
-    								Swal.fire({
-    									title: 'Sukses!',
-    									text: e.message,
-    									icon: 'success',
-    									confirmButtonText: 'Cool'
-    								})
+
+    								$('#sukses').show();
+    								$('#sukses').delay(1800).hide(0);
+    								// Swal.fire({
+    								// 	title: 'Sukses!',
+    								// 	text: e.message,
+    								// 	icon: 'success',
+    								// 	confirmButtonText: 'Cool'
+    								// })
     							} else {
     								Swal.fire({
     									icon: 'error',
@@ -347,12 +357,15 @@
     							// $('#modalAdmin').modal('hide'); //$('body').removeClass('modal-open');$('.modal-backdrop').remove();
     							var alert = '';
     							if (e.status) {
-    								Swal.fire({
-    									title: 'Mantoel!',
-    									text: e.message,
-    									icon: 'success',
-    									confirmButtonText: 'Cool'
-    								})
+    								// Swal.fire({
+    								// 	title: 'Mantoel!',
+    								// 	text: e.message,
+    								// 	icon: 'success',
+    								// 	confirmButtonText: 'Cool'
+    								// })
+
+    								$('#sukses').show();
+    								$('#sukses').delay(1800).hide(0);
     								$('#modal').modal('hide');
     								datatable.ajax.reload();
     								// resetForm();
@@ -384,7 +397,7 @@
     				$('body').on('click', '.hapus', function() {
     					var id_user = $(this).data('id_custumer');
     					var nama_admin = $(this).data('nama_custumer');
-						// console.log(id_user);
+    					// console.log(id_user);
     					Swal.fire({
     						title: 'Are you sure?',
     						text: "Anda akan Menghapus custumer: " + nama_admin,
@@ -406,11 +419,14 @@
     								}
     							}).done(function(e) {
     								// console.log(e);
-    								Swal.fire(
-    									'Deleted!',
-    									e.message,
-    									'success'
-    								)
+    								// Swal.fire(
+    								// 	'Deleted!',
+    								// 	e.message,
+    								// 	'success'
+    								// )
+
+    								$('#sukses').show();
+    								$('#sukses').delay(1800).hide(0);
     								$('#modal-detail').modal('hide');
 
     								datatable.ajax.reload();
