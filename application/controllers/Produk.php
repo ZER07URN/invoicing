@@ -99,6 +99,12 @@ class Produk extends CI_Controller {
 			$this->ProdukModel->tambah_admin($in);
 			$status = true;
 			$message = 'Berhasil Menambahkan Produk.';
+
+			$id_userReal = $_SESSION['id_admin'];
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Tambah  Produk  : ' . $username;
+			$namaLog = 'Tambah  Produk';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
 		} else {
 			$message = 'Gagal menambahkan Produk Baru!<br>Silahkan lengkapi data yang diperlukan.';
 
@@ -139,6 +145,13 @@ class Produk extends CI_Controller {
 		if ($status) {
 			$this->ProdukModel->editDariTable('produk', $in, $id_admin,'id_produk');
 			$message = 'Berhasil Update Produk ';
+
+			$id_userReal = $_SESSION['id_admin'];
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Edit  Produk  : ' . $nama;
+			$namaLog = 'Edit  Produk';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
+
 		} else {
 			$message = 'Gagal Meng-Update Produk! ';
 		}
@@ -162,6 +175,14 @@ class Produk extends CI_Controller {
 			$this->ProdukModel->hapusDariTable('produk', $id_user,'id_produk');
 			$status = true;
 			$message = 'Berhasil menghapus Produk: <b>' . $data[0]->nama_produk . '</b>';
+
+
+			$id_userReal = $_SESSION['id_admin'];
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Hapus  Produk  : ' . $data[0]->nama_produk;
+			$namaLog = 'Hapus  Produk';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
+
 		}
 
 		echo json_encode(array(

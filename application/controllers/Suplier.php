@@ -102,6 +102,12 @@ class Suplier extends CI_Controller {
 			$this->SuplierModel->tambah($in);
 			$status = true;
 			$message = 'Berhasil Menambahkan .';
+
+			$id_userReal = $_SESSION['id_admin'];
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Tambah Suplier  Produk  : ' . $username;
+			$namaLog = 'Tambah Suplier  Produk';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
 		} else {
 			$message = 'Gagal menambahkan data Baru!<br>Silahkan lengkapi data yang diperlukan.';
 
@@ -143,6 +149,12 @@ class Suplier extends CI_Controller {
 		if ($status) {
 			$this->ProdukModel->editDariTable('supplier', $in, $id_admin, 'id_supplier');
 			$message = 'Berhasil Update Data ';
+
+			$id_userReal = $_SESSION['id_admin'];
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Edit Suplier  Produk  : ' . $nama;
+			$namaLog = 'Edit Suplier  Produk';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
 		} else {
 			$message = 'Gagal Meng-Update Data! ';
 		}
@@ -166,6 +178,12 @@ class Suplier extends CI_Controller {
 			$this->ProdukModel->hapusDariTable('supplier', $id_user,'id_supplier');
 			$status = true;
 			$message = 'Berhasil menghapus Dara: <b>' . $data[0]->nama_supplier . '</b>';
+
+			$id_userReal = $_SESSION['id_admin'];
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Hapus Suplier  Produk  : ' . $data[0]->nama_supplier;
+			$namaLog = 'Hapus Suplier  Produk';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
 		}
 
 		echo json_encode(array(
