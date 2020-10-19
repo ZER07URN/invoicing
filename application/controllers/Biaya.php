@@ -13,6 +13,7 @@ class Biaya extends CI_Controller {
 		$this->load->model('SuplierModel');
 		$this->load->model('BiayaModel');
 		$this->load->model('AdminModel');
+		$this->load->model('HistoriModel');
 	}
 	public function index()
 	{
