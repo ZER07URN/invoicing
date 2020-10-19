@@ -12,17 +12,16 @@ public function login(){
 
 	{
 		$columns = array(
-			'nama_produk','status'
+			'nama_produk','jenis','status','updated','nama_admin'
 		);
 		// untuk search
 		$columnsSearch = array(
-			'nama_produk',		
+			'nama_produk',	'nama_admin'	
 		);
-		$from = 'produk u';
+		$from = 'produk p';
 		// custom SQL
 
-		$sql = "SELECT* FROM {$from} 
-		";
+		$sql = "SELECT* FROM {$from} join user u on u.id_user = p.updatedby	";
 		$where = "";
 		// if (isset($post['id_kelas']) && $post['id_kelas'] != 'default') {
 		// 	if ($where != "") $where .= "AND";
@@ -67,6 +66,7 @@ public function login(){
 		$start  = isset($post['start']) ? $post['start'] : 0;
 		$length = isset($post['length']) ? $post['length'] : 10;
 		$sql .= " LIMIT {$start}, {$length}";
+		var_dump($sql);
 		$data  = $this->db->query($sql);
 		return array(
 

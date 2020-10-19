@@ -13,16 +13,17 @@ public function login(){
 	{
 		$columns = array(
 			'nama_kendaraan',
-			'status','jenis','updated', 'updatedby'
+		'jenis','k.status','updated', 'nama_admin'
 		);
 		// untuk search
 		$columnsSearch = array(
-			'nama_kendaraan',		
+			'nama_kendaraan',
+			'nama_admin'	
 		);
 		$from = 'kendaraan k';
 		// custom SQL
 
-		$sql = "SELECT* FROM {$from} 
+		$sql = "SELECT* FROM {$from} join user u on u.id_user = k.updatedby
 		";
 		$where = "";
 		// if (isset($post['id_kelas']) && $post['id_kelas'] != 'default') {

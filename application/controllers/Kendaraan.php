@@ -11,6 +11,7 @@ class Kendaraan extends CI_Controller {
 		$this->load->model('KendaraanModel');
 		$this->load->model('ProdukModel');
 		$this->load->model('AdminModel');
+		$this->load->model('HistoriModel');
 	}
 	function cekLogin()
 	{
@@ -69,6 +70,8 @@ class Kendaraan extends CI_Controller {
 		$no = $start + 1;
 		$status = "";
 		foreach ($dt['data']->result() as $row) {
+
+			// var_dump($row);die;
 			if ($row->status == 1) {
 				$status = "<span class='btn btn-rounded btn-outline-success px-3 btn-sm'>Aktif</span>";
 			} else {
@@ -86,7 +89,7 @@ class Kendaraan extends CI_Controller {
 			$fields[] = $jenis . '<br>';
 			$fields[] = $status . '<br>';
 			$fields[] = $format. '<br>';
-			$fields[] = $row->updatedby . '<br>';
+			$fields[] = $row->nama_admin . '<br>';
 			$fields[] = '
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
 			data-id_kendaraan="' . $row->id_kendaraan . '" 
@@ -109,6 +112,8 @@ class Kendaraan extends CI_Controller {
 	}
 	public function tambah()
 	{
+
+		$id_userReal = $_SESSION['id_admin'];
 		$username = $this->input->post('nama', TRUE);
 		$stat = $this->input->post('status', TRUE);
 		$jenis = $this->input->post('jenis', TRUE);
@@ -123,7 +128,7 @@ class Kendaraan extends CI_Controller {
 			'status' => $stat,
 			'jenis' => $jenis,
 			'updated' => date('Y-m-d H:i:s'),
-			'updatedby' => 1,
+			'updatedby' => $id_userReal,
 		);
 
 		if (empty($username)) {
@@ -135,7 +140,6 @@ class Kendaraan extends CI_Controller {
 			$status = true;
 			$message = 'Berhasil Menambahkan Produk.';
 
-			$id_userReal = $_SESSION['id_admin'];
 			$created = date('Y-m-d H:i:s');
 			$desk = 'Tambah Kendaraan  : ' . $username;
 			$namaLog = 'Tambah Kendaraan';
@@ -158,6 +162,8 @@ class Kendaraan extends CI_Controller {
 	}
 	public function edit()
 	{
+
+		$id_userReal = $_SESSION['id_admin'];
 		// var_dump($_POST);die;
 		$id_admin = $this->input->post('id_admin', TRUE);
 		$nama = $this->input->post('nama', TRUE);
@@ -173,7 +179,7 @@ class Kendaraan extends CI_Controller {
 			'status' => $stat,
 			'jenis' => $jenis,
 			'updated' => date('Y-m-d H:i:s'),
-			'updatedby' => 2,
+			'updatedby' => $id_userReal,
 		);
 
 		if (empty($nama)) {
