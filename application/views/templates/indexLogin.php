@@ -5,8 +5,6 @@
         <!-- main header -->
  
 
- 	<?php $this->load->view('templates/header') ?>
-
  
         <!-- main header ends -->
 
