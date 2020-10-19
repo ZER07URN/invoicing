@@ -202,6 +202,13 @@ public function tambah_admin()
 }
 public function getAllProduk()
 {
+		$id_admin = $this->session->userdata('id_admin');
+
+		$admin_r = $this->AdminModel->getRole($id_admin, 'admin_r')->r;
+		$admin_c = $this->AdminModel->getRole($id_admin, 'admin_c')->r;
+		$admin_u = $this->AdminModel->getRole($id_admin, 'admin_u')->r;
+		$admin_d = $this->AdminModel->getRole($id_admin, 'admin_d')->r;
+
 		$dt = $this->AdminModel->data_AllAdmin($_POST);
 		$bu = base_url();
 		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
@@ -226,21 +233,23 @@ public function getAllProduk()
 			$fields[] = $row->email . '<br>';
 			$fields[] = $status . '<br>';
 			$fields[] = $format . '<br>';
-			$fields[] = '
-			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
-			data-id_user="' . $row->id_user . '" 
-			data-nama_admin="' . $row->nama_admin . '" 
-			data-email="' . $row->email . '" 
-			data-status="' . $row->status . '" 
-			data-created="' . $row->created . '" 
-			data-password="' . $this->bizDecrypt($row->password) . '" 		
-			data-admin_r="' . $row->admin_r . '" data-admin_c="' . $row->admin_c . '" data-admin_u="' . $row->admin_u . '" data-admin_d="' . $row->admin_d . '" 
-			
-			data-suplier_r="' . $row->supplier_r . '" data-suplier_c="' . $row->supplier_c . '" data-suplier_u="' . $row->supplier_u . '" data-suplier_d="' . $row->supplier_d . '" 
+
+			if($admin_u==1 and $admin_d==1){
+				$fields[] = '
+				<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
+				data-id_user="' . $row->id_user . '" 
+				data-nama_admin="' . $row->nama_admin . '" 
+				data-email="' . $row->email . '" 
+				data-status="' . $row->status . '" 
+				data-created="' . $row->created . '" 
+				data-password="' . $this->bizDecrypt($row->password) . '" 		
+				data-admin_r="' . $row->admin_r . '" data-admin_c="' . $row->admin_c . '" data-admin_u="' . $row->admin_u . '" data-admin_d="' . $row->admin_d . '" 
+				
+				data-suplier_r="' . $row->supplier_r . '" data-suplier_c="' . $row->supplier_c . '" data-suplier_u="' . $row->supplier_u . '" data-suplier_d="' . $row->supplier_d . '" 
 
 
-			data-produk_r="' . $row->produk_r . '" 
-			data-produk_c="' . $row->produk_c . '" 
+				data-produk_r="' . $row->produk_r . '" 
+				data-produk_c="' . $row->produk_c . '" 
 				data-produk_u="' . $row->produk_u . '" 	data-produk_d="' . $row->produk_d . '" 	data-kendaraan_r="' . $row->kendaraan_r . '" 	data-kendaraan_c="' . $row->kendaraan_c . '" 	data-kendaraan_u="' . $row->kendaraan_u . '" 	data-kendaraan_d="' . $row->kendaraan_d . '" 
 
 				data-histori_r="' . $row->histori_r . '" 	data-histori_c="' . $row->histori_c . '" 		data-histori_u="' . $row->histori_u . '" 	data-histori_d="' . $row->histori_d . '" 
@@ -250,12 +259,57 @@ public function getAllProduk()
 				data-biaya_r="' . $row->biaya_r . '" 	data-biaya_c="' . $row->biaya_c . '" 		data-biaya_u="' . $row->biaya_u . '" 	data-biaya_d="' . $row->biaya_d . '" 
 
 
-			></i> Ubah</button>
+					></i> Ubah</button>
 
-        <button class="btn btn-round btn-danger hapus" data-id_user="' . $row->id_user . '" data-nama_admin="' . $row->nama_admin . '"
-        >Hapus</button>              
+				<button class="btn btn-round btn-danger hapus" data-id_user="' . $row->id_user . '" data-nama_admin="' . $row->nama_admin . '"
+				>Hapus</button>              
 
-        ';
+				';
+		
+			}else if($admin_u == 0 and $admin_d == 1){
+				$fields[] = '
+				<button class="btn btn-round btn-danger hapus" data-id_user="' . $row->id_user . '" data-nama_admin="' . $row->nama_admin . '"
+				>Hapus</button>              
+
+				';
+
+			} else if ($admin_u == 1 and $admin_d == 0) {
+				$fields[] = '
+				<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
+				data-id_user="' . $row->id_user . '" 
+				data-nama_admin="' . $row->nama_admin . '" 
+				data-email="' . $row->email . '" 
+				data-status="' . $row->status . '" 
+				data-created="' . $row->created . '" 
+				data-password="' . $this->bizDecrypt($row->password) . '" 		
+				data-admin_r="' . $row->admin_r . '" data-admin_c="' . $row->admin_c . '" data-admin_u="' . $row->admin_u . '" data-admin_d="' . $row->admin_d . '" 
+				
+				data-suplier_r="' . $row->supplier_r . '" data-suplier_c="' . $row->supplier_c . '" data-suplier_u="' . $row->supplier_u . '" data-suplier_d="' . $row->supplier_d . '" 
+
+
+				data-produk_r="' . $row->produk_r . '" 
+				data-produk_c="' . $row->produk_c . '" 
+				data-produk_u="' . $row->produk_u . '" 	data-produk_d="' . $row->produk_d . '" 	data-kendaraan_r="' . $row->kendaraan_r . '" 	data-kendaraan_c="' . $row->kendaraan_c . '" 	data-kendaraan_u="' . $row->kendaraan_u . '" 	data-kendaraan_d="' . $row->kendaraan_d . '" 
+
+				data-histori_r="' . $row->histori_r . '" 	data-histori_c="' . $row->histori_c . '" 		data-histori_u="' . $row->histori_u . '" 	data-histori_d="' . $row->histori_d . '" 
+
+				data-custumer_r="' . $row->custumer_r . '" 	data-custumer_c="' . $row->custumer_c . '" 		data-custumer_u="' . $row->custumer_u . '" 	data-custumer_d="' . $row->custumer_d . '" 
+
+				data-biaya_r="' . $row->biaya_r . '" 	data-biaya_c="' . $row->biaya_c . '" 		data-biaya_u="' . $row->biaya_u . '" 	data-biaya_d="' . $row->biaya_d . '" 
+
+
+					></i> Ubah</button>            
+
+				';
+			}else{
+				$fields[] = '
+				<button class="btn btn-round btn-danger" 
+				>Tidak Punya Akses!</button>              
+
+				';
+			}
+
+
 			$datatable['data'][] = $fields;
 		}
 

@@ -1,5 +1,14 @@
     <?php
 	$bu = base_url();
+	$id_admin = $this->session->userdata('id_admin');
+	
+	$admin_r = $this->AdminModel->getRole($id_admin, 'admin_r')->r;
+	$admin_c = $this->AdminModel->getRole($id_admin, 'admin_c')->r;
+	$admin_u = $this->AdminModel->getRole($id_admin, 'admin_u')->r;
+	$admin_d = $this->AdminModel->getRole($id_admin, 'admin_d')->r;
+
+
+
 	?>
 
 
@@ -11,7 +20,12 @@
     					<h2 class="content-color-primary page-title">Master Admin</h2>
     				</div>
     				<div class="col-auto">
+					
+						<?php 	if($admin_c == '1'){ ?>
+
     					<button class="btn btn-rounded pink-gradient text-uppercase pr-3" id="tombole"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
+						<?php }?>
+
     				</div>
     			</div>
     		</div>

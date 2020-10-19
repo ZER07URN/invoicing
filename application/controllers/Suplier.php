@@ -36,6 +36,10 @@ class Suplier extends CI_Controller {
 	}
 	public function getAll()
 	{
+
+
+		$id_admin = $this->session->userdata('id_admin');
+		
 		$dt = $this->SuplierModel->data_All($_POST);
 		$bu = base_url();
 		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
@@ -47,16 +51,17 @@ class Suplier extends CI_Controller {
 		$no = $start + 1;
 		$status = "";
 		foreach ($dt['data']->result() as $row) {
+			
 			if ($row->status == 1) {
-				$status = "<span class='btn btn-rounded btn-outline-success px-3 btn-sm'>Aktif</span>";
+				$sta = "<span class='btn btn-rounded btn-outline-success px-3 btn-sm'>Aktif</span>";
 			} else {
-				$status = "<span class='btn btn-rounded btn-outline-warning px-3 btn-sm'>Non Aktiv</span>";
+				$sta = "<span class='btn btn-rounded btn-outline-warning px-3 btn-sm'>Non Aktiv</span>";
 			}
 
 
 			$fields = array($no++);
 			$fields[] = $row->nama_supplier . '<br>';
-			$fields[] = $status . '<br>';
+			$fields[] = $sta . '<br>';
 			$fields[] = $row->nama_admin . '<br>';
 			$fields[] = '
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 

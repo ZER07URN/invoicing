@@ -10,6 +10,7 @@ class Produk extends CI_Controller {
 
 		$this->load->model('ProdukModel');
 		$this->load->model('AdminModel');
+		$this->load->model('HistoriModel');
 	}
 	public function index()
 	{
