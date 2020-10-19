@@ -1,5 +1,10 @@
     <?php
 	$bu = base_url();
+	$cr = $this->AdminModel->getRole($id_admin, 'custumer_r')->r;
+	$cc = $this->AdminModel->getRole($id_admin, 'custumer_c')->r;
+	$cu = $this->AdminModel->getRole($id_admin, 'custumer_u')->r;
+	$cd = $this->AdminModel->getRole($id_admin, 'custumer_d')->r;
+
 	?>
 
 
@@ -9,10 +14,13 @@
     			<div class="row align-items-center">
     				<div class="col">
     					<h2 class="content-color-primary page-title">Master Customer</h2>
-    				</div>
+					</div>
+					
+    				<?php if ($kc == '1') { ?>
     				<div class="col-auto">
     					<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
-    				</div>
+					</div>
+					<?php } ?>
     			</div>
     		</div>
     	</div>

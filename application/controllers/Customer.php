@@ -60,6 +60,13 @@ class Customer extends CI_Controller {
 	}
 	public function getAll()
 	{
+
+		$id_admin = $this->session->userdata('id_admin');
+		$cr = $this->AdminModel->getRole($id_admin, 'custumer_r')->r;
+		$cc = $this->AdminModel->getRole($id_admin, 'custumer_c')->r;
+		$cu = $this->AdminModel->getRole($id_admin, 'custumer_u')->r;
+		$cd = $this->AdminModel->getRole($id_admin, 'custumer_d')->r;
+
 		$dt = $this->CustomerModel->data_All($_POST);
 		$bu = base_url();
 		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
@@ -83,6 +90,8 @@ class Customer extends CI_Controller {
 			$fields[] = $row->alamat . '<br>';
 			$fields[] = $row->no_telepon . '<br>';
 			$fields[] = $status . '<br>';
+
+			if ($cu == 1 and $cd == 1){
 			$fields[] = '
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
 			data-id_custumer="' . $row->id_custumer . '" 
@@ -91,10 +100,27 @@ class Customer extends CI_Controller {
 			data-alamat="' . $row->alamat . '"  
 			></i> Ubah</button>
 
-        <button class="btn btn-round btn-danger hapus" data-id_custumer="' . $row->id_custumer . '" data-nama_custumer="' . $row->nama_custumer . '"
-        >Hapus</button>              
+        	<button class="btn btn-round btn-danger hapus" data-id_custumer="' . $row->id_custumer . '" data-nama_custumer="' . $row->nama_custumer . '"
+			>Hapus</button>   ';
+			} else if ($cu == 0 and $cd == 1) {
+				$fields[] = '
+        	<button class="btn btn-round btn-danger hapus" data-id_custumer="' . $row->id_custumer . '" data-nama_custumer="' . $row->nama_custumer . '"
+			>Hapus</button>   ';
+			}else if ($cu == 1 and $cd == 0) {
+				$fields[] = '
+        	<button class="btn btn-round btn-danger hapus" data-id_custumer="' . $row->id_custumer . '" data-nama_custumer="' . $row->nama_custumer . '"
+			>Hapus</button>   ';
+			} else {
+				$fields[] = '
+				<button class="btn btn-round btn-danger" 
+				>Tidak Punya Akses!</button>              
 
-        ';
+				';
+			}
+			
+
+		
+
 			$datatable['data'][] = $fields;
 		}
 
