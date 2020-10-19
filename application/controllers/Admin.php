@@ -12,6 +12,7 @@ class Admin extends CI_Controller {
 
     $this->load->model('AdminModel');
 	$this->load->model('ProdukModel');
+		$this->load->model('HistoriModel');
 
   }
 	function cekLogin()
@@ -40,9 +41,14 @@ class Admin extends CI_Controller {
 	public function logout()
 
 	{
+		// var_dump($_SESSION);die;
+		$id_user = $_SESSION['id_admin'];
 
+		$created = date('Y-m-d H:i:s');
+		$desk = 'Logout  ';
+		$namaLog = 'Logout';
+		$this->HistoriModel->log($id_user, $namaLog, $desk,$created);
 		$this->session->sess_destroy();
-
 		redirect('login');
 	}
 
@@ -69,6 +75,8 @@ public function index()
 }
 public function tambah_admin()
 {
+	// var_dump($_SESSION);die;
+	$id_userReal = $_SESSION['id_admin'];
 	$username = $this->input->post('nama', TRUE);
     $password = $this->input->post('password', TRUE);
     $email = $this->input->post('email', TRUE);
@@ -168,7 +176,11 @@ public function tambah_admin()
 			);
 		$this->AdminModel->tambah_admin_role($in_role);
 		 $status = true;
-    	$message = 'Berhasil Menambahkan Admin.';
+		$message = 'Berhasil Menambahkan Admin.';
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Tambah Admin  , nama Admin Baru : ' .$username;
+			$namaLog = 'Tambah Admin';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk,$created);
 		 
 
       } else {
@@ -256,6 +268,8 @@ public function getAllProduk()
 
 public function edit_admin()
 {
+
+		$id_userReal = $_SESSION['id_admin'];
 	// var_dump($_POST);die;
 		$id_admin = $this->input->post('id_admin', TRUE);	
 		$password = $this->input->post('password', TRUE);
@@ -357,7 +371,15 @@ public function edit_admin()
 		if ($status) {
 			$this->AdminModel->editDariTable('user',$in, $id_admin);		
 			$message = 'Berhasil Update Admin ';
-			$this->ProdukModel->editDariTable('user_role', $in_role, $id_admin,'id_user');	
+			$this->ProdukModel->editDariTable('user_role', $in_role, $id_admin,'id_user');
+
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Edit Admin  Menjadi Admin : ' .$nama;
+			$namaLog = 'Edit Admin';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
+
+
+
 				} 
 		 else {
 			$message = 'Gagal Meng-Update Admin! ';
@@ -371,7 +393,8 @@ public function edit_admin()
 
 public function hapusAdmin()
 {
-	
+
+		$id_userReal = $_SESSION['id_admin'];
 		$id_user = $this->input->post('id_user', true);
 		$data = $this->AdminModel->getAdminById($id_user);
 		// var_dump($data);die();
@@ -383,6 +406,11 @@ public function hapusAdmin()
 			$this->AdminModel->hapusDariTable('user',$id_user);			
 				$status = true;
 				$message = 'Berhasil menghapus Admin: <b>' . $data[0]->nama_admin . '</b>';
+
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Hapus Admin : ' . $data[0]->nama_admin ;
+			$namaLog = 'Edit Admin';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
 
 		}
 

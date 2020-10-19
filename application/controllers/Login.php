@@ -106,10 +106,12 @@ public function index()
 					$status = true;
 					$message = 'Selamat datang ' . $r->nama_admin . ', sedang mengalihkan..';
 
-					//Log histori
+						//Log histori
+
+					$created = date('Y-m-d H:i:s');
 					$desk = 'Login  ' ;
 					$namaLog = 'Login';
-					$this->HistoriModel->log($r->id_user, $namaLog, $desk);
+					$this->HistoriModel->log($r->id_user, $namaLog, $desk, $created);
 
 				} else {
 					$message = 'Username & password tidak cocok!';

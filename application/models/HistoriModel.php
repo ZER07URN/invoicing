@@ -111,14 +111,15 @@ public function login(){
 		$this->db->where($id_table, $id_admin);
 		$this->db->delete($table);
 	}
-	public function log($id_user, $namaLog, $desk)
+	public function log($id_user, $namaLog, $desk,$created)
 	{
 		$data = array(
 			"id_user" => $id_user,
 			"nama_histori" => $namaLog,
 			"deskripsi" => $desk,
+			"created" => $created,
 		);
-		$this->db->set('created', 'NOW()', false);
+		// $this->db->set('created', 'NOW()', false);
 		if ($this->db->insert('histori', $data)) {
 			$data['sukses'] = true;
 		} else {
