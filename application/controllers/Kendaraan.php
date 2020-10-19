@@ -79,13 +79,13 @@ class Kendaraan extends CI_Controller {
 			} else {
 				$jenis = "<span class='btn btn-rounded btn-outline-warning px-3 btn-sm'>Truk</span>";
 			}
-
+			$format = date('d/m/Y h:m:s', strtotime($row->updated));
 
 			$fields = array($no++);
 			$fields[] = $row->nama_kendaraan . '<br>';
 			$fields[] = $jenis . '<br>';
 			$fields[] = $status . '<br>';
-			$fields[] = $row->updated. '<br>';
+			$fields[] = $format. '<br>';
 			$fields[] = $row->updatedby . '<br>';
 			$fields[] = '
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 

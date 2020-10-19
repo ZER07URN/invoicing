@@ -45,11 +45,11 @@ class Histori extends CI_Controller {
 		$no = $start + 1;
 		$status = "";
 		foreach ($dt['data']->result() as $row) {
-            
+			$format = date('d/m/Y h:m:s', strtotime($row->created));
 
 
 			$fields = array($no++);
-			$fields[] = $row->created . '<br>';
+			$fields[] = $format. '<br>';
 			$fields[] = $row->nama_admin . '<br>';
 			$fields[] = $row->nama_histori . '<br>';
 			$fields[] = $row->deskripsi . '<br>';

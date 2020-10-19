@@ -206,13 +206,14 @@ public function getAllProduk()
 			}else{
 				$status = "<span class='btn btn-rounded btn-outline-warning px-3 btn-sm'>Non Aktiv</span>";
 			}
+			$format = date('d/m/Y h:m:s', strtotime($row->created));
 
 
 			$fields = array($no++);
 			$fields[] = $row->nama_admin . '<br>';
 			$fields[] = $row->email . '<br>';
 			$fields[] = $status . '<br>';
-			$fields[] = $row->created . '<br>';
+			$fields[] = $format . '<br>';
 			$fields[] = '
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
 			data-id_user="' . $row->id_user . '" 
