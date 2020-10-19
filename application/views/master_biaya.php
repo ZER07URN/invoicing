@@ -9,7 +9,12 @@
 
 
 	?>
-
+    <div class="alert alert-success" role="alert" id="sukses">
+    	Berhasil....
+    	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    		<span aria-hidden="true">×</span>
+    	</button>
+    </div>
 
     <div class="container-fluid bg-light-opac">
     	<div class="row">
@@ -240,12 +245,15 @@
     						if (e.status) {
     							$('#modal').modal('hide');
     							datatable.ajax.reload();
-    							Swal.fire({
-    								title: 'Sukses!',
-    								text: e.message,
-    								icon: 'success',
-    								confirmButtonText: 'Cool'
-    							})
+    							// Swal.fire({
+    							// 	title: 'Sukses!',
+    							// 	text: e.message,
+    							// 	icon: 'success',
+    							// 	confirmButtonText: 'Cool'
+    							// })
+
+    							$('#sukses').show();
+    							$('#sukses').delay(1800).hide(0);
     						} else {
     							Swal.fire({
     								icon: 'error',
@@ -311,12 +319,15 @@
     						// $('#modalAdmin').modal('hide'); //$('body').removeClass('modal-open');$('.modal-backdrop').remove();
     						var alert = '';
     						if (e.status) {
-    							Swal.fire({
-    								title: 'Mantoel!',
-    								text: e.message,
-    								icon: 'success',
-    								confirmButtonText: 'Cool'
-    							})
+    							// Swal.fire({
+    							// 	title: 'Mantoel!',
+    							// 	text: e.message,
+    							// 	icon: 'success',
+    							// 	confirmButtonText: 'Cool'
+    							// })
+
+    							$('#sukses').show();
+    							$('#sukses').delay(1800).hide(0);
     							$('#modal').modal('hide');
     							datatable.ajax.reload();
     							// resetForm();
@@ -370,11 +381,14 @@
     							}
     						}).done(function(e) {
     							// console.log(e);
-    							Swal.fire(
-    								'Deleted!',
-    								e.message,
-    								'success'
-    							)
+    							// Swal.fire(
+    							// 	'Deleted!',
+    							// 	e.message,
+    							// 	'success'
+    							// )
+
+    							$('#sukses').show();
+    							$('#sukses').delay(1800).hide(0);
     							$('#modal-detail').modal('hide');
 
     							datatable.ajax.reload();
