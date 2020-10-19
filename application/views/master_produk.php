@@ -1,5 +1,14 @@
     <?php
 	$bu = base_url();
+
+	$id_admin = $this->session->userdata('id_admin');
+
+	$pr = $this->AdminModel->getRole($id_admin, 'produk_r')->r;
+	$pc = $this->AdminModel->getRole($id_admin, 'produk_c')->r;
+	$pu = $this->AdminModel->getRole($id_admin, 'produk_u')->r;
+	$pd = $this->AdminModel->getRole($id_admin, 'produk_d')->r;
+
+
 	?>
 
 
@@ -11,7 +20,10 @@
     					<h2 class="content-color-primary page-title">Master Produk</h2>
     				</div>
     				<div class="col-auto">
-    					<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
+						
+						<?php 	if($pc == '1'){ ?>
+						<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
+						<?php }?>
     				</div>
     			</div>
     		</div>

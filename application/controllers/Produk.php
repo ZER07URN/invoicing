@@ -36,6 +36,14 @@ class Produk extends CI_Controller {
 	}
 	public function getAllProduk()
 	{
+		$id_admin = $this->session->userdata('id_admin');
+
+		$pr = $this->AdminModel->getRole($id_admin, 'produk_r')->r;
+		$pc = $this->AdminModel->getRole($id_admin, 'produk_c')->r;
+		$pu = $this->AdminModel->getRole($id_admin, 'produk_u')->r;
+		$pd = $this->AdminModel->getRole($id_admin, 'produk_d')->r;
+
+
 		$dt = $this->ProdukModel->data_AllProduk($_POST);
 		$bu = base_url();
 		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
@@ -57,17 +65,35 @@ class Produk extends CI_Controller {
 			$fields = array($no++);
 			$fields[] = $row->nama_produk . '<br>';
 			$fields[] = $status . '<br>';
-			$fields[] = '
-			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
-			data-id_produk="' . $row->id_produk . '" 
-			data-nama_produk="' . $row->nama_produk . '" 
-			data-status="' . $row->status . '"  		
-			></i> Ubah</button>
+			if ($pu == 1 and $pd == 1){
 
-        <button class="btn btn-round btn-danger hapus" data-id_produk="' . $row->id_produk . '" data-nama_produk="' . $row->nama_produk . '"
-        >Hapus</button>              
+				$fields[] = '
+				<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
+				data-id_produk="' . $row->id_produk . '" 
+				data-nama_produk="' . $row->nama_produk . '" 
+				data-status="' . $row->status . '"  		
+				></i> Ubah</button>
+	
+				<button class="btn btn-round btn-danger hapus" data-id_produk="' . $row->id_produk . '" data-nama_produk="' . $row->nama_produk . '" >Hapus</button>    ';
+			} else if ($pu == 0 and $pd == 1) {
+				$fields[] = '	
+				<button class="btn btn-round btn-danger hapus" data-id_produk="' . $row->id_produk . '" data-nama_produk="' . $row->nama_produk . '" >Hapus</button>    ';
+			} else if ($pu == 1 and $pd == 0) {
+				$fields[] = '	
+				<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
+				data-id_produk="' . $row->id_produk . '" 
+				data-nama_produk="' . $row->nama_produk . '" 
+				data-status="' . $row->status . '"  		
+				></i> Ubah</button>';
+			} else {
+				$fields[] = '
+				<button class="btn btn-round btn-danger" 
+				>Tidak Punya Akses!</button>              
 
-        ';
+				';
+			}
+		
+
 			$datatable['data'][] = $fields;
 		}
 
