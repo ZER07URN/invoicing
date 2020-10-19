@@ -1,5 +1,12 @@
     <?php
 	$bu = base_url();
+	$id_admin = $this->session->userdata('id_admin');
+	$kr = $this->AdminModel->getRole($id_admin, 'kendaraan_r')->r;
+	$kc = $this->AdminModel->getRole($id_admin, 'kendaraan_c')->r;
+	$ku = $this->AdminModel->getRole($id_admin, 'kendaraan_u')->r;
+	$kd = $this->AdminModel->getRole($id_admin, 'kendaraan_d')->r;
+
+
 	?>
 
 
@@ -10,9 +17,13 @@
     				<div class="col">
     					<h2 class="content-color-primary page-title">Master Kendaraan</h2>
     				</div>
-    				<div class="col-auto">
-    					<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
-    				</div>
+
+    				<?php if ($kc == '1') { ?>
+    					<div class="col-auto">
+    						<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
+    					</div>
+    				<?php } ?>
+
     			</div>
     		</div>
     	</div>

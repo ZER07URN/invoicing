@@ -59,6 +59,15 @@ class Kendaraan extends CI_Controller {
 	}
 	public function getAllProduk()
 	{
+		
+		$id_admin = $this->session->userdata('id_admin');
+
+		$kr = $this->AdminModel->getRole($id_admin, 'kendaraan_r')->r;
+		$kc = $this->AdminModel->getRole($id_admin, 'kendaraan_c')->r;
+		$ku = $this->AdminModel->getRole($id_admin, 'kendaraan_u')->r;
+		$kd = $this->AdminModel->getRole($id_admin, 'kendaraan_d')->r;
+		
+
 		$dt = $this->KendaraanModel->data_AllProduk($_POST);
 		$bu = base_url();
 		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
@@ -90,6 +99,8 @@ class Kendaraan extends CI_Controller {
 			$fields[] = $status . '<br>';
 			$fields[] = $format. '<br>';
 			$fields[] = $row->nama_admin . '<br>';
+			
+			if ($ku == 1 and $kd == 1){
 			$fields[] = '
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
 			data-id_kendaraan="' . $row->id_kendaraan . '" 
@@ -97,10 +108,28 @@ class Kendaraan extends CI_Controller {
 			data-status="' . $row->status . '"  	data-jenis="' . $row->jenis . '"  		
 			></i> Ubah</button>
 
-        <button class="btn btn-round btn-danger hapus" data-nama_kendaraan="' . $row->nama_kendaraan . '" data-id_kendaraan="' . $row->id_kendaraan . '"
-        >Hapus</button>              
+        	<button class="btn btn-round btn-danger hapus" data-nama_kendaraan="' . $row->nama_kendaraan . '" data-id_kendaraan="' . $row->id_kendaraan . '"
+			   >Hapus</button>   ';
+			} else if ($ku == 0 and $kd == 1) {
+				$fields[] = '
+        		<button class="btn btn-round btn-danger hapus" data-nama_kendaraan="' . $row->nama_kendaraan . '" data-id_kendaraan="' . $row->id_kendaraan . '"
+			   >Hapus</button>   ';
+			}
+			if ($ku == 1 and $kd == 0) {
+			$fields[] = '
+			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
+			data-id_kendaraan="' . $row->id_kendaraan . '" 
+			data-nama_kendaraan="' . $row->nama_kendaraan . '" 
+			data-status="' . $row->status . '"  	data-jenis="' . $row->jenis . '"  		
+			></i> Ubah</button> ';
+			} else {
+				$fields[] = '
+				<button class="btn btn-round btn-danger" 
+				>Tidak Punya Akses!</button>              
 
-        ';
+				';
+			}
+
 			$datatable['data'][] = $fields;
 		}
 
