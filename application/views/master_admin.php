@@ -1,7 +1,7 @@
     <?php
 	$bu = base_url();
 	$id_admin = $this->session->userdata('id_admin');
-	
+
 	$admin_r = $this->AdminModel->getRole($id_admin, 'admin_r')->r;
 	$admin_c = $this->AdminModel->getRole($id_admin, 'admin_c')->r;
 	$admin_u = $this->AdminModel->getRole($id_admin, 'admin_u')->r;
@@ -11,6 +11,12 @@
 
 	?>
 
+    <div class="alert alert-success" role="alert" id="sukses">
+    	Berhasil....
+    	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    		<span aria-hidden="true">×</span>
+    	</button>
+    </div>
 
     <div class="container-fluid bg-light-opac">
     	<div class="row">
@@ -20,11 +26,11 @@
     					<h2 class="content-color-primary page-title">Master Admin</h2>
     				</div>
     				<div class="col-auto">
-					
-						<?php 	if($admin_c == '1'){ ?>
 
-    					<button class="btn btn-rounded pink-gradient text-uppercase pr-3" id="tombole"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
-						<?php }?>
+    					<?php if ($admin_c == '1') { ?>
+
+    						<button class="btn btn-rounded pink-gradient text-uppercase pr-3" id="tombole"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
+    					<?php } ?>
 
     				</div>
     			</div>
@@ -345,7 +351,7 @@
     		document.addEventListener("DOMContentLoaded", function(event) {
 
 
-
+    			$('#sukses').hide()
     			var datatable = $('#masteradmin').DataTable({
     				dom: "Bfrltip",
     				'pageLength': 10,
@@ -539,15 +545,18 @@
     						var alert = '';
 
     						if (e.status) {
+    							$('#sukses').show();
+    							$('#sukses').delay(1800).hide(0);
+
     							$('#modal').modal('hide');
     							datatable.ajax.reload();
     							$(':checkbox').prop('checked', false);
-    							Swal.fire({
-    								title: 'Mantul!',
-    								text: e.message,
-    								icon: 'success',
-    								confirmButtonText: 'Cool'
-    							})
+    							// Swal.fire({
+    							// 	title: 'Mantul!',
+    							// 	text: e.message,
+    							// 	icon: 'success',
+    							// 	confirmButtonText: 'Cool'
+    							// })
     						} else {
     							Swal.fire({
     								icon: 'error',
@@ -755,12 +764,16 @@
     						// $('#modalAdmin').modal('hide'); //$('body').removeClass('modal-open');$('.modal-backdrop').remove();
     						var alert = '';
     						if (e.status) {
-    							Swal.fire({
-    								title: 'Mantoel!',
-    								text: e.message,
-    								icon: 'success',
-    								confirmButtonText: 'Cool'
-    							})
+    							$('#sukses').show();
+    							$('#sukses').delay(1800).hide(0);
+
+    							// Swal.fire({
+    							// 	title: 'Mantoel!',
+    							// 	text: e.message,
+    							// 	icon: 'success',
+    							// 	confirmButtonText: 'Cool'
+    							// })
+
     							$('#modal').modal('hide');
     							datatable.ajax.reload();
     							// resetForm();
@@ -814,11 +827,9 @@
     							}
     						}).done(function(e) {
     							// console.log(e);
-    							Swal.fire(
-    								'Deleted!',
-    								e.message,
-    								'success'
-    							)
+
+    							$('#sukses').show();
+    							$('#sukses').delay(1800).hide(0);
     							$('#modal-detail').modal('hide');
 
     							datatable.ajax.reload();

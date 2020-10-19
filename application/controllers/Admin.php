@@ -506,6 +506,11 @@ public function hapusAdmin()
 	{
 		return $plain_password == $this->bizDecrypt($encrypted);
 	}
+	public function cek()
+	{
+		var_dump( date('l, d-m-Y  G:i:s'));
+		# code...
+	}
 
 
         
