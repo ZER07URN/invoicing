@@ -1,5 +1,13 @@
     <?php
 	$bu = base_url();
+	$id_admin = $this->session->userdata('id_admin');
+
+	$br = $this->AdminModel->getRole($id_admin, 'biaya_r')->r;
+	$bc = $this->AdminModel->getRole($id_admin, 'biaya_c')->r;
+	$bu = $this->AdminModel->getRole($id_admin, 'biaya_u')->r;
+	$bd = $this->AdminModel->getRole($id_admin, 'biaya_d')->r;
+
+
 	?>
 
 
@@ -10,9 +18,13 @@
     				<div class="col">
     					<h2 class="content-color-primary page-title">Master Biaya Operasionall</h2>
     				</div>
-    				<div class="col-auto">
-    					<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
-    				</div>
+
+    				<?php if ($bc == '1') { ?>
+    					<div class="col-auto">
+    						<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
+    					</div>
+
+    				<?php } ?>
     			</div>
     		</div>
     	</div>
@@ -143,7 +155,7 @@
     					[1, "desc"]
     				],
     				'ajax': {
-    					url: '<?= $bu ?>Biaya/getAll',
+    					url: '<?= base_url() ?>Biaya/getAll',
     					type: 'POST',
     					"data": function(d) {
     						// d.id_kelas = id_kelas;

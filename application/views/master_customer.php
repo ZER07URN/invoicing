@@ -1,5 +1,8 @@
     <?php
 	$bu = base_url();
+
+	$id_admin = $this->session->userdata('id_admin');
+
 	$cr = $this->AdminModel->getRole($id_admin, 'custumer_r')->r;
 	$cc = $this->AdminModel->getRole($id_admin, 'custumer_c')->r;
 	$cu = $this->AdminModel->getRole($id_admin, 'custumer_u')->r;
@@ -16,7 +19,7 @@
     					<h2 class="content-color-primary page-title">Master Customer</h2>
 					</div>
 					
-    				<?php if ($kc == '1') { ?>
+    				<?php if ($cc == '1') { ?>
     				<div class="col-auto">
     					<button class="btn btn-rounded pink-gradient text-uppercase pr-3"><i class="material-icons"></i> <span class="text-hide-xs" data-toggle="modal" data-target="#modal">Tambah</span></button>
 					</div>

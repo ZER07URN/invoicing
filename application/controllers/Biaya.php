@@ -38,6 +38,14 @@ class Biaya extends CI_Controller {
 	}
 	public function getAll()
 	{
+
+		$id_admin = $this->session->userdata('id_admin');
+
+		$br = $this->AdminModel->getRole($id_admin, 'biaya_r')->r;
+		$bc = $this->AdminModel->getRole($id_admin, 'biaya_c')->r;
+		$bup = $this->AdminModel->getRole($id_admin, 'biaya_u')->r;
+		$bd = $this->AdminModel->getRole($id_admin, 'biaya_d')->r;
+
 		$dt = $this->BiayaModel->data_All($_POST);
 		$bu = base_url();
 		$datatable['draw']      = isset($_POST['draw']) ? $_POST['draw'] : 1;
@@ -66,6 +74,7 @@ class Biaya extends CI_Controller {
 			$fields[] = $row->nama_biaya . '<br>';
 			$fields[] = $status . '<br>';
 			$fields[] = $format  . '<br>';
+		if ($bup == 1 and $bd == 1) {
 			$fields[] = '
 			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
 			data-id_biaya="' . $row->id_biaya . '" 
@@ -73,11 +82,27 @@ class Biaya extends CI_Controller {
 			data-status="' . $row->status . '"  	
 			></i> Ubah</button>
 
-        <button class="btn btn-round btn-danger hapus" 			data-id_biaya="' . $row->id_biaya . '" 
+       		 <button class="btn btn-round btn-danger hapus" 			data-id_biaya="' . $row->id_biaya . '" 
+				data-nama_biaya="' . $row->nama_biaya . '" 
+				>Hapus</button>     ';
+		} else	if ($bup == 0 and $bd == 1) {
+				$fields[] = '
+				<button class="btn btn-round btn-danger hapus" 			data-id_biaya="' . $row->id_biaya . '" 
+						data-nama_biaya="' . $row->nama_biaya . '"  	>Hapus</button>     ';
+			} else	if ($bup == 1 and $bd == 0) {
+				$fields[] = '
+			<button class="btn btn-round btn-info btn_edit"  data-toggle="modal" data-target="#modal" 
+			data-id_biaya="' . $row->id_biaya . '" 
 			data-nama_biaya="' . $row->nama_biaya . '" 
-        >Hapus</button>              
+			data-status="' . $row->status . '"  	
+			></i> Ubah</button>  ';
+			} else {
+				$fields[] = '
+				<button class="btn btn-round btn-danger" 
+				>Tidak Punya Akses!</button> ';
+			}
+			
 
-        ';
 			$datatable['data'][] = $fields;
 		}
 
