@@ -4,7 +4,7 @@
 
 	$br = $this->AdminModel->getRole($id_admin, 'biaya_r')->r;
 	$bc = $this->AdminModel->getRole($id_admin, 'biaya_c')->r;
-	$bu = $this->AdminModel->getRole($id_admin, 'biaya_u')->r;
+	$bub = $this->AdminModel->getRole($id_admin, 'biaya_u')->r;
 	$bd = $this->AdminModel->getRole($id_admin, 'biaya_d')->r;
 
 
@@ -122,6 +122,7 @@
     	<script type="text/javascript">
     		document.addEventListener("DOMContentLoaded", function(event) {
 
+    			$('#sukses').hide()
 
 
     			var datatable = $('#masteradmin').DataTable({
