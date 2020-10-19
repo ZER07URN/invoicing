@@ -88,6 +88,7 @@ class Biaya extends CI_Controller {
 	}
 	public function tambah()
 	{
+
 		$username = $this->input->post('nama', TRUE);
 		$stat = $this->input->post('status', TRUE);
 
@@ -110,6 +111,14 @@ class Biaya extends CI_Controller {
 			$this->BiayaModel->tambah($in);
 			$status = true;
 			$message = 'Berhasil Menambahkan .';
+
+
+			$id_userReal = $_SESSION['id_admin'];
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Tambah Biaya  : ' . $username;
+			$namaLog = 'Tambah Biaya';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
+
 		} else {
 			$message = 'Gagal menambahkan data Baru!<br>Silahkan lengkapi data yang diperlukan.';
 
@@ -151,6 +160,12 @@ class Biaya extends CI_Controller {
 		if ($status) {
 			$this->ProdukModel->editDariTable('biaya_opr', $in, $id_admin, 'id_biaya');
 			$message = 'Berhasil Update Data ';
+
+			$id_userReal = $_SESSION['id_admin'];
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Edit  Biaya  : ' . $nama;
+			$namaLog = 'Edit Biaya';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
 		} else {
 			$message = 'Gagal Meng-Update Data! ';
 		}
@@ -174,6 +189,12 @@ class Biaya extends CI_Controller {
 			$this->ProdukModel->hapusDariTable('biaya_opr', $id_user,'id_biaya');
 			$status = true;
 			$message = 'Berhasil menghapus Dara: <b>' . $data[0]->nama_biaya . '</b>';
+
+			$id_userReal = $_SESSION['id_admin'];
+			$created = date('Y-m-d H:i:s');
+			$desk = 'Hapus  Biaya  : ' . $data[0]->nama_biaya;
+			$namaLog = 'Hapus Biaya';
+			$this->HistoriModel->log($id_userReal, $namaLog, $desk, $created);
 		}
 
 		echo json_encode(array(
