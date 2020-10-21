@@ -320,12 +320,12 @@
     						// $('#modalAdmin').modal('hide'); //$('body').removeClass('modal-open');$('.modal-backdrop').remove();
     						var alert = '';
     						if (e.status) {
-    							// Swal.fire({
-    							// 	title: 'Mantoel!',
-    							// 	text: e.message,
-    							// 	icon: 'success',
-    							// 	confirmButtonText: 'Cool'
-    							// })
+    							Swal.fire({
+    								title: 'Mantoel!',
+    								text: e.message,
+    								icon: 'success',
+    								confirmButtonText: 'Cool'
+    							})
 
     							$('#sukses').show();
     							$('#sukses').delay(1800).hide(0);

@@ -88,17 +88,17 @@
 								$('#password').val('');
 								$('#captcha').val('');
 
-								// Swal.fire({
-								// 	title: 'Sukses!',
-								// 	text: e.message,
-								// 	icon: 'success',
-								// 	confirmButtonText: 'Cool'
-								// })
-								window.location = '<?= $bu ?>Landing';
+								Swal.fire({
+									title: 'Sukses!',
+									text: e.message,
+									icon: 'success',
+									confirmButtonText: 'Cool'
+								})
+								// window.location = '<?= $bu ?>Landing';
 
-								// setTimeout(() => {
-								// 	window.location = '<?= $bu ?>Landing';
-								// }, 1800);
+								setTimeout(() => {
+									window.location = '<?= $bu ?>Landing';
+								}, 1800);
 
 							} else {
 								Swal.fire({

@@ -765,14 +765,14 @@
     						var alert = '';
     						if (e.status) {
     							$('#sukses').show();
-    							$('#sukses').delay(1800).hide(0);
+    							// $('#sukses').delay(1800).hide(0);
 
-    							// Swal.fire({
-    							// 	title: 'Mantoel!',
-    							// 	text: e.message,
-    							// 	icon: 'success',
-    							// 	confirmButtonText: 'Cool'
-    							// })
+    							Swal.fire({
+    								title: 'Mantoel!',
+    								text: e.message,
+    								icon: 'success',
+    								confirmButtonText: 'Cool'
+    							})
 
     							$('#modal').modal('hide');
     							datatable.ajax.reload();
